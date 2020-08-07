@@ -12,9 +12,9 @@ import useQuestions from './useQuestions';
 const Quiz = () => {
   const { questId } = useParams();
 
-  const { unfinishedQuests, setQuestFinished } = useContext(QuestContext);
+  const { getQuestById, setQuestFinished } = useContext(QuestContext);
 
-  const { questions, character, finished } = unfinishedQuests[questId];
+  const { questions, character, finished } = getQuestById(questId);
 
   const [
     selectedAnswerID,

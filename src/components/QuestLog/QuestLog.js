@@ -18,7 +18,7 @@ const QuestLog = () => {
       {unfinishedQuests.map((x, i) => {
         if (x.finished) return '';
         return (
-          <Link key={i} to={'quiz/' + i}>
+          <Link key={i} to={'quiz/' + x.id}>
             {' '}
             {x.character}
           </Link>
