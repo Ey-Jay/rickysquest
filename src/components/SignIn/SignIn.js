@@ -1,13 +1,18 @@
 import React from 'react';
-import { Form } from './styled';
+import { Container, Logo } from './styled';
+import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 
 const SignIn = () => (
-  <Form onSubmit={(e) => e.preventDefault()}>
-    <label>Email</label>
-    <input />
-    <label>Password</label>
-    <input />
-  </Form>
+  <>
+    <Logo>
+      <LogoSVG />
+    </Logo>
+    <Container>
+      <form onSubmit={(e) => e.preventDefault()}>
+        {/* FIREBASE LOGIN SHIT */}
+      </form>
+    </Container>
+  </>
 );
 
 export default SignIn;

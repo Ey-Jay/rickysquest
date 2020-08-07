@@ -19,6 +19,7 @@ export const Collection = styled.section`
 
 export const Follower = styled.article`
   margin: 0 5px 15px 0;
+  max-width: 80px;
 
   img {
     height: 80px;
@@ -34,5 +35,6 @@ export const Follower = styled.article`
     font-weight: 700;
     font-size: 0.7rem;
     text-align: center;
+    word-wrap: break-word;
   }
 `;

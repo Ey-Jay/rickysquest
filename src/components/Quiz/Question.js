@@ -22,11 +22,11 @@ const Question = ({ question, answers, selectedAnswer, setAnswersGiven }) => {
 
 const Answer = ({ checked, answerStr, onClick }) => {
   return (
-    <div>
+    <>
       <label>{answerStr}</label>
       <input checked={checked} type="radio" onChange={onClick} />
       <br />
-    </div>
+    </>
   );
 };
 
