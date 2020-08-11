@@ -1,36 +1,67 @@
 import React, { useContext } from 'react';
-import { Container } from './styled';
+import {
+  FinishedQuests,
+  ActiveQuests,
+  AvailableQuests,
+  NoQuests
+} from './styled';
 import { Link } from 'react-router-dom';
 
 import QuestContext from 'context/quests';
+import adventures from 'data/adventures';
 
 const QuestLog = () => {
-  const { unfinishedQuests, finishedQuests } = useContext(QuestContext);
+  // const { unfinishedQuests, finishedQuests } = useContext(QuestContext);
 
   return (
-    <Container>
-      <h3> QuestLog</h3>
-      <br />
+    <>
+      <h1>QuestLog</h1>
+      <h2>Finished Quests</h2>
+      <FinishedQuests>
+        {adventures.length > 0 ? (
+          adventures.map(({ id, title }) => (
+            <li key={id}>
+              <h3>{title}</h3>
+              <button>See Results</button>
+            </li>
+          ))
+        ) : (
+          <NoQuests>No Finished Quests</NoQuests>
+        )}
+      </FinishedQuests>
 
-      <br />
-      <p>unfinshed quests:</p>
+      <h2>Active Quests</h2>
+      <ActiveQuests>
+        {adventures.length > 0 ? (
+          adventures.map(({ id, title, timeLeft }) => (
+            <li key={id}>
+              <h3>{title}</h3>
+              <aside>{`${timeLeft} min`}</aside>
+            </li>
+          ))
+        ) : (
+          <NoQuests>No Active Quests</NoQuests>
+        )}
+      </ActiveQuests>
 
-      {unfinishedQuests.map((x, i) => {
-        if (x.finished) return '';
-        return (
-          <Link key={i} to={'quiz/' + x.id}>
-            {' '}
-            {x.character}
-          </Link>
-        );
-      })}
-
-      <p>finished quests:</p>
-      {finishedQuests.map((x, i) => {
-        if (!x.finished) return '';
-        return <div key={i}> {x.character} </div>;
-      })}
-    </Container>
+      <h2>Available Quests</h2>
+      <AvailableQuests>
+        <li className='quiz'>
+          <h3>Start a Quiz</h3>
+          <button>Start</button>
+        </li>
+        {adventures.length > 0 ? (
+          adventures.map(({ id, title }) => (
+            <li key={id}>
+              <h3>{title}</h3>
+              <button>Start</button>
+            </li>
+          ))
+        ) : (
+          <NoQuests>No Available Adventures</NoQuests>
+        )}
+      </AvailableQuests>
+    </>
   );
 };
 
