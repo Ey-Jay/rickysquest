@@ -40,6 +40,17 @@ export const FinishedQuests = styled.ul`
     padding: 18px 36px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: transform 0.1s, background-color 0.2s;
+    box-shadow: 1px 2px 3px #00000011, 1px 2px 9px #00000011;
+  }
+
+  button:hover {
+    background-color: #6ad957;
+  }
+
+  button:active  {
+    background-color: #6ad957;
+    transform: scale(0.9);
   }
 `;
 
@@ -105,6 +116,17 @@ export const AvailableQuests = styled.ul`
     padding: 18px 36px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: transform 0.1s, background-color 0.2s;
+    box-shadow: 1px 2px 3px #00000011, 1px 2px 9px #00000011;
+  }
+
+  button:hover {
+    background-color: #6ad957;
+  }
+
+  button:active  {
+    background-color: #6ad957;
+    transform: scale(0.9);
   }
 
   .quiz {
@@ -113,6 +135,15 @@ export const AvailableQuests = styled.ul`
     button {
       background-color: #00000044;
       color: #fff;
+    }
+
+    button:hover {
+      background-color: #00000033;
+    }
+
+    button:active  {
+      background-color: #00000033;
+      transform: scale(0.9);
     }
   }
 `;
