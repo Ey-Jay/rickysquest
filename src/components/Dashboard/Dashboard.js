@@ -1,37 +1,36 @@
 import React from 'react';
 import { NoQuests, FinishedQuests, ActiveQuests } from './styled';
-import { Link } from 'react-router-dom';
 
 const finishedQuests = [
   {
     id: 1,
-    title: 'Florp the Glorp',
+    title: 'Florp the Glorp'
   },
   {
     id: 2,
-    title: 'Glorp the Florp',
+    title: 'Glorp the Florp'
   },
   {
     id: 3,
-    title: 'Florp the Glorp',
+    title: 'Florp the Glorp'
   },
   {
     id: 4,
-    title: 'Glorp the Florp',
-  },
+    title: 'Glorp the Florp'
+  }
 ];
 
 const activeQuests = [
   {
     id: 1,
     title: 'Florp the Glorp',
-    timeLeft: 13,
+    timeLeft: 13
   },
   {
     id: 2,
     title: 'Glorp the Florp',
-    timeLeft: 24,
-  },
+    timeLeft: 24
+  }
 ];
 
 const Dashboard = () => (
