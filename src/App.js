@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
 import Dashboard from 'components/Dashboard';
@@ -13,63 +13,55 @@ import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 
 import { QuestContextProvider } from './context/quests';
 
-import FirebaseContextProvider from './context/Firebase';
+import app from './base';
+import { AuthContext } from './context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
   return (
     <div className="App">
-      <FirebaseContextProvider>
-        <QuestContextProvider>
+      <QuestContextProvider>
+        <Navbar>
+          <section>
+            <div>
+              <LogoSVG />
+            </div>
+            {currentUser && (
+              <ul>
+                <NavLink exact to="/">
+                  <li>Dashboard</li>
+                </NavLink>
+                <NavLink to="/questlog">
+                  <li>Quests</li>
+                </NavLink>
+                <NavLink to="/persona">
+                  <li>Collection</li>
+                </NavLink>
+                <button onClick={() => app.auth().signOut()}>
+                  <li>Logout</li>
+                </button>
+              </ul>
+            )}
+          </section>
+        </Navbar>
+        <Content>
           <Switch>
-            <Route path="/signin" />
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <PrivateRoute path="/endscreen/:result" component={EndScreen} />
+            <PrivateRoute path="/quiz/:questId" component={Quiz} />
+            <PrivateRoute path="/persona" component={Persona} />
+            <PrivateRoute path="/questlog" component={QuestLog} />
+            <PrivateRoute exact path="/" component={Dashboard} />
             <Route path="*">
-              <Navbar>
-                <section>
-                  <div>
-                    <LogoSVG />
-                  </div>
-                  <ul>
-                    <NavLink exact to="/">
-                      <li>Dashboard</li>
-                    </NavLink>
-                    <NavLink to="/questlog">
-                      <li>Quests</li>
-                    </NavLink>
-                    <NavLink to="/persona">
-                      <li>Collection</li>
-                    </NavLink>
-                  </ul>
-                </section>
-              </Navbar>
+              <h1>404</h1>
             </Route>
           </Switch>
-          <Content>
-            <Switch>
-              <Route path="/signin">
-                <SignIn />
-              </Route>
-              <Route path="/endscreen/:result">
-                <EndScreen />
-              </Route>
-              <Route path="/quiz/:questId">
-                <Quiz />
-              </Route>
-              <Route path="/persona">
-                <Persona />
-              </Route>
-              <Route path="/questlog">
-                <QuestLog />
-              </Route>
-              <Route exact path="/">
-                <Dashboard />
-              </Route>
-              <Route path="*">
-                <h1>404</h1>
-              </Route>
-            </Switch>
-          </Content>
-        </QuestContextProvider>
-      </FirebaseContextProvider>
+        </Content>
+      </QuestContextProvider>
     </div>
   );
 }
