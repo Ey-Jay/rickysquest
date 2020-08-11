@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Switch, Route, NavLink } from 'react-router-dom';
 
 import Persona from 'components/Persona';
 import QuestLog from 'components/QuestLog';
@@ -12,60 +12,52 @@ import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 
 import { QuestContextProvider } from './context/quests';
 
-import FirebaseContextProvider from './context/Firebase';
+import app from './base';
+import { AuthContext } from './context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
   return (
-    <div className='App'>
-      <FirebaseContextProvider>
-        <QuestContextProvider>
+    <div className="App">
+      <QuestContextProvider>
+        <Navbar>
+          <section>
+            <div>
+              <LogoSVG />
+            </div>
+            {currentUser && (
+              <ul>
+                <NavLink to="/questlog">
+                  <li>Quests</li>
+                </NavLink>
+                <NavLink to="/persona">
+                  <li>Collection</li>
+                </NavLink>
+                <button onClick={() => app.auth().signOut()}>
+                  <li>Logout</li>
+                </button>
+              </ul>
+            )}
+          </section>
+        </Navbar>
+        <Content>
           <Switch>
-            <Route path='/signin' />
-            <Route path='*'>
-              <Navbar>
-                <section>
-                  <div>
-                    <LogoSVG />
-                  </div>
-                  <ul>
-                    <NavLink to='/questlog'>
-                      <li>Quests</li>
-                    </NavLink>
-                    <NavLink to='/persona'>
-                      <li>Collection</li>
-                    </NavLink>
-                  </ul>
-                </section>
-              </Navbar>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <PrivateRoute path="/endscreen/:result" component={EndScreen} />
+            <PrivateRoute path="/quiz/:questId" component={Quiz} />
+            <PrivateRoute path="/persona" component={Persona} />
+            <PrivateRoute path="/questlog" component={QuestLog} />
+            <PrivateRoute exact path="/" component={Questlog} />
+            <Route path="*">
+              <h1>404</h1>
             </Route>
           </Switch>
-          <Content>
-            <Switch>
-              <Route path='/signin'>
-                <SignIn />
-              </Route>
-              <Route path='/endscreen/:result'>
-                <EndScreen />
-              </Route>
-              <Route path='/quiz/:questId'>
-                <Quiz />
-              </Route>
-              <Route path='/persona'>
-                <Persona />
-              </Route>
-              <Route path='/questlog'>
-                <QuestLog />
-              </Route>
-              <Route exact path='/'>
-                <Redirect to='/questlog' />
-              </Route>
-              <Route path='*'>
-                <h1>404</h1>
-              </Route>
-            </Switch>
-          </Content>
-        </QuestContextProvider>
-      </FirebaseContextProvider>
+        </Content>
+      </QuestContextProvider>
     </div>
   );
 }
