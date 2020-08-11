@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
-import Dashboard from 'components/Dashboard';
 import Persona from 'components/Persona';
 import QuestLog from 'components/QuestLog';
 import Quiz from 'components/Quiz';
@@ -30,9 +29,6 @@ function App() {
             </div>
             {currentUser && (
               <ul>
-                <NavLink exact to="/">
-                  <li>Dashboard</li>
-                </NavLink>
                 <NavLink to="/questlog">
                   <li>Quests</li>
                 </NavLink>
@@ -55,7 +51,7 @@ function App() {
             <PrivateRoute path="/quiz/:questId" component={Quiz} />
             <PrivateRoute path="/persona" component={Persona} />
             <PrivateRoute path="/questlog" component={QuestLog} />
-            <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute exact path="/" component={Questlog} />
             <Route path="*">
               <h1>404</h1>
             </Route>
