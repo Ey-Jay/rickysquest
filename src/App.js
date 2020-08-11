@@ -29,7 +29,7 @@ function App() {
             </div>
             {currentUser && (
               <ul>
-                <NavLink to="/questlog">
+                <NavLink exact to="/">
                   <li>Quests</li>
                 </NavLink>
                 <NavLink to="/persona">
@@ -50,8 +50,7 @@ function App() {
             <PrivateRoute path="/endscreen/:result" component={EndScreen} />
             <PrivateRoute path="/quiz/:questId" component={Quiz} />
             <PrivateRoute path="/persona" component={Persona} />
-            <PrivateRoute path="/questlog" component={QuestLog} />
-            <PrivateRoute exact path="/" component={Questlog} />
+            <PrivateRoute exact path="/" component={QuestLog} />
             <Route path="*">
               <h1>404</h1>
             </Route>
