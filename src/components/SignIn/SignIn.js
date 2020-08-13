@@ -1,13 +1,25 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import { gql, useQuery } from '@apollo/client';
+import * as firebase from 'firebase/app';
+
 import { Container, Logo } from './styled';
 import { ReactComponent as LogoSVG } from 'assets/rick.svg';
-import * as firebase from 'firebase/app';
-import app from '../../base';
-
+import app, { db } from '../../base';
 import { AuthContext } from '../../context/AuthProvider';
 
+const INITIAL_FOLLOWERS = gql`
+  query Characters {
+    characters {
+      results {
+        name
+      }
+    }
+  }
+`;
+
 const SignIn = () => {
+  const { data } = useQuery(INITIAL_FOLLOWERS);
   const { currentUser } = useContext(AuthContext);
   const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -15,7 +27,15 @@ const SignIn = () => {
     app
       .auth()
       .signInWithPopup(provider)
-      .then(function (result) {
+      .then((result) => {
+        return db
+          .collection('users')
+          .doc(result.user.uid)
+          .set({
+            followers: data.characters.results
+              .slice(0, 3)
+              .map((char) => char.name),
+          });
         // // This gives you a Google Access Token. You can use it to access the Google API.
         // const token = result.credential.accessToken;
         // // The signed-in user info.
@@ -23,7 +43,10 @@ const SignIn = () => {
         // // ...
         // history.push('/');
       })
-      .catch(function (error) {
+      .then(() => {
+        console.log('succesfully signup');
+      })
+      .catch((error) => {
         // // Handle Errors here.
         // const errorCode = error.code;
         // const errorMessage = error.message;
