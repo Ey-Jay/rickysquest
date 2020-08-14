@@ -18,7 +18,6 @@ import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
   return (
     <div className="App">
       <QuestContextProvider>
