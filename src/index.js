@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { AuthProvider } from 'context/AuthProvider';
 import { ThemeProvider } from 'styled-components';
-import theme from 'theme';
+import { theme, GlobalStyles } from 'theme';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql/',
@@ -19,6 +18,7 @@ ReactDOM.render(
       <AuthProvider>
         <ThemeProvider theme={theme}>
           <Router>
+            <GlobalStyles />
             <App />
           </Router>
         </ThemeProvider>
