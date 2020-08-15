@@ -5,6 +5,8 @@ import { Nav } from './styled';
 import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 
 const Navbar = () => {
+  const onClickHandler = () => app.auth().signOut();
+
   return (
     <Nav>
       <section>
@@ -18,9 +20,7 @@ const Navbar = () => {
           <NavLink to="/persona">
             <li>Collection</li>
           </NavLink>
-          <button onClick={() => app.auth().signOut()}>
-            <li>Logout</li>
-          </button>
+          <li onClick={onClickHandler}>Logout</li>
         </ul>
       </section>
     </Nav>

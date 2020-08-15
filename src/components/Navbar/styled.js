@@ -29,6 +29,7 @@ export const Nav = styled.nav`
     display: inline-block;
     padding: 20px;
     font-weight: 700;
+    cursor: pointer;
   }
 
   a.active {
