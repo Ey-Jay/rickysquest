@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import app from 'base';
+import app from '../../base';
 import { Nav } from './styled';
 import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 
 const Navbar = () => {
   const onClickHandler = () => app.auth().signOut();
-
   return (
     <Nav>
       <section>
