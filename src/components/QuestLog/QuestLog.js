@@ -32,10 +32,10 @@ const QuestLog = () => {
       <h2>Active</h2>
       <ActiveQuests>
         {adventures.length > 0 ? (
-          adventures.map(({ id, title, timeLeft }) => (
+          adventures.map(({ id, title }) => (
             <li key={id}>
               <h3>{title}</h3>
-              <aside>{`${timeLeft} min`}</aside>
+              <aside>6 min</aside>
             </li>
           ))
         ) : (

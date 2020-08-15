@@ -30,6 +30,27 @@ export const Nav = styled.nav`
     padding: 20px;
     font-weight: 700;
     cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  li::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 4px;
+    left: 55%;
+    right: 55%;
+    bottom: 10px;
+    border-radius: 2px;
+    background-color: ${({ theme }) => theme.primary};
+    transition: all 0.3s;
+  }
+
+  li:hover::after,
+  a.active li::after {
+    left: 20px;
+    right: 20px;
   }
 
   a.active {
