@@ -8,6 +8,7 @@ export const theme = {
   background: '#191414',
   backgroundDark: '#121212',
   backgroundLight: '#212121',
+  border: '#535353',
 };
 
 export const GlobalStyles = createGlobalStyle`

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  background-color: #111;
-  color: #fff;
+  background-color: ${({ theme }) => theme.backgroundDark};
+  color: ${({ theme }) => theme.color};
+  border-bottom: solid 1px ${({ theme }) => theme.border};
+  box-shadow: 0 0 7px #00000033, 0 0 21px #00000033;
   height: 70px;
   padding: 0 20px;
 
@@ -30,6 +32,6 @@ export const Nav = styled.nav`
   }
 
   a.active {
-    color: #72e85d;
+    color: ${({ theme }) => theme.primary};
   }
 `;
