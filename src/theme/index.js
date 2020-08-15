@@ -22,14 +22,23 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.color};
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #111;
   }
 
   a {
     color: inherit;
     text-decoration: inherit;
+  }
+
+  input {
+    font-family: inherit;
+  }
+
+  button {
+    font-family: inherit;
   }
 `;
