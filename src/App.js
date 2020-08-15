@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
-import { QuestContextProvider } from './context/quests';
-import { AuthContext } from './context/AuthProvider';
-import PrivateRoute from './components/PrivateRoute';
+import { QuestContextProvider } from 'context/quests';
+import { AuthContext } from 'context/AuthProvider';
+import PrivateRoute from 'components/PrivateRoute';
 
 import Persona from 'components/Persona';
 import QuestLog from 'components/QuestLog';
