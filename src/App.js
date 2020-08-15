@@ -6,8 +6,9 @@ import QuestLog from 'components/QuestLog';
 import Quiz from 'components/Quiz';
 import EndScreen from 'components/EndScreen';
 import SignIn from 'components/SignIn';
+import Navbar from 'components/Navbar';
 
-import { Navbar, Content } from './App.styled.js';
+import { Content } from './App.styled.js';
 import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 
 import { QuestContextProvider } from './context/quests';
@@ -21,26 +22,7 @@ function App() {
   return (
     <div className="App">
       <QuestContextProvider>
-        <Navbar>
-          <section>
-            <div>
-              <LogoSVG />
-            </div>
-            {currentUser && (
-              <ul>
-                <NavLink exact to="/">
-                  <li>Quests</li>
-                </NavLink>
-                <NavLink to="/persona">
-                  <li>Collection</li>
-                </NavLink>
-                <button onClick={() => app.auth().signOut()}>
-                  <li>Logout</li>
-                </button>
-              </ul>
-            )}
-          </section>
-        </Navbar>
+        {currentUser && <Navbar />}
         <Content>
           <Switch>
             <Route path="/signin">
