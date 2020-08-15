@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   FinishedQuests,
   ActiveQuests,
   AvailableQuests,
   NoQuests,
 } from './styled';
-import { Link } from 'react-router-dom';
 
-import QuestContext from 'context/quests';
+// import QuestContext from 'context/quests';
 import adventures from 'data/adventures';
 
 const QuestLog = () => {

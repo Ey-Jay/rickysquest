@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { QuestContextProvider } from 'context/quests';
 import { AuthContext } from 'context/AuthProvider';
