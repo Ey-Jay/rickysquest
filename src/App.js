@@ -1,46 +1,25 @@
 import React, { useContext } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+
+import { QuestContextProvider } from 'context/quests';
+import { AuthContext } from 'context/AuthProvider';
+import PrivateRoute from 'components/PrivateRoute';
 
 import Persona from 'components/Persona';
 import QuestLog from 'components/QuestLog';
 import Quiz from 'components/Quiz';
 import EndScreen from 'components/EndScreen';
 import SignIn from 'components/SignIn';
+import Navbar from 'components/Navbar';
 
-import { Navbar, Content } from './App.styled.js';
-import { ReactComponent as LogoSVG } from 'assets/rick.svg';
-
-import { QuestContextProvider } from './context/quests';
-
-import app from './base';
-import { AuthContext } from './context/AuthProvider';
-import PrivateRoute from './components/PrivateRoute';
+import { Content } from './App.styled.js';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
   return (
     <div className="App">
       <QuestContextProvider>
-        <Navbar>
-          <section>
-            <div>
-              <LogoSVG />
-            </div>
-            {currentUser && (
-              <ul>
-                <NavLink exact to="/">
-                  <li>Quests</li>
-                </NavLink>
-                <NavLink to="/persona">
-                  <li>Collection</li>
-                </NavLink>
-                <button onClick={() => app.auth().signOut()}>
-                  <li>Logout</li>
-                </button>
-              </ul>
-            )}
-          </section>
-        </Navbar>
+        {currentUser && <Navbar />}
         <Content>
           <Switch>
             <Route path="/signin">

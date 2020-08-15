@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, AvatarContainer, Collection, Follower } from './styled';
+import { AvatarContainer, Collection, Follower } from './styled';
 import { ReactComponent as AvatarSVG } from 'assets/avatar.svg';
 import { useQuery, gql } from '@apollo/client';
 
