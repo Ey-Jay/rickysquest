@@ -5,6 +5,8 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { AuthProvider } from 'context/AuthProvider';
+import { ThemeProvider } from 'styled-components';
+import theme from 'theme';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql/',
@@ -15,9 +17,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <AuthProvider>
-        <Router>
-          <App />
-        </Router>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
       </AuthProvider>
     </ApolloProvider>
   </React.StrictMode>,
