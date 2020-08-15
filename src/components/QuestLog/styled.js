@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const NoQuests = styled.div`
-  background-color: #f7f7f7;
-  color: #666;
+  background-color: ${({ theme }) => theme.backgroundLight};
+  color: ${({ theme }) => theme.colorDark};
   font-weight: 700;
   font-size: 0.9rem;
   text-align: center;
@@ -18,23 +18,24 @@ export const FinishedQuests = styled.ul`
   li {
     display: flex;
     align-items: center;
-    background-color: #efefef;
+    background-color: ${({ theme }) => theme.backgroundLight};
     margin: 0 0 20px;
     padding: 10px 10px 10px 20px;
     border-radius: 4px;
   }
 
   h3 {
+    color: ${({ theme }) => theme.primary};
     margin: 0;
     padding: 0;
     flex: 1;
   }
 
   button {
-    background-color: #72e85d;
+    background-color: ${({ theme }) => theme.primaryDark};
     border: none;
     border-radius: 4px;
-    color: #336b29;
+    color: ${({ theme }) => theme.color};
     font-weight: 700;
     font-size: 0.7rem;
     padding: 18px 36px;
@@ -45,11 +46,11 @@ export const FinishedQuests = styled.ul`
   }
 
   button:hover {
-    background-color: #6ad957;
+    background-color: ${({ theme }) => theme.primary};
   }
 
   button:active  {
-    background-color: #6ad957;
+    background-color: ${({ theme }) => theme.primary};
     transform: scale(0.9);
   }
 `;
@@ -62,23 +63,24 @@ export const ActiveQuests = styled.ul`
   li {
     display: flex;
     align-items: center;
-    background-color: #efefef;
+    background-color: ${({ theme }) => theme.backgroundLight};
     margin: 0 0 20px;
     padding: 10px 10px 10px 20px;
     border-radius: 4px;
   }
 
   h3 {
+    color: ${({ theme }) => theme.colorDark};
     margin: 0;
     padding: 0;
     flex: 1;
   }
 
   aside {
-    background-color: #ccc;
+    background-color: ${({ theme }) => theme.backgroundDark};
     border: none;
     border-radius: 4px;
-    color: #666;
+    color: ${({ theme }) => theme.colorDark};
     font-weight: 700;
     font-size: 0.7rem;
     padding: 18px 36px;
@@ -94,23 +96,24 @@ export const AvailableQuests = styled.ul`
   li {
     display: flex;
     align-items: center;
-    background-color: #efefef;
+    background-color: ${({ theme }) => theme.backgroundLight};
     margin: 0 0 20px;
     padding: 10px 10px 10px 20px;
     border-radius: 4px;
   }
 
   h3 {
+    color: ${({ theme }) => theme.primary};
     margin: 0;
     padding: 0;
     flex: 1;
   }
 
   button {
-    background-color: #72e85d;
+    background-color: ${({ theme }) => theme.primaryDark};
     border: none;
     border-radius: 4px;
-    color: #336b29;
+    color: ${({ theme }) => theme.color};
     font-weight: 700;
     font-size: 0.7rem;
     padding: 18px 36px;
@@ -121,29 +124,15 @@ export const AvailableQuests = styled.ul`
   }
 
   button:hover {
-    background-color: #6ad957;
+    background-color: ${({ theme }) => theme.primary};
   }
 
   button:active  {
-    background-color: #6ad957;
+    background-color: ${({ theme }) => theme.primary};
     transform: scale(0.9);
   }
 
   .quiz {
-    background-color: #72e85d;
-
-    button {
-      background-color: #00000044;
-      color: #fff;
-    }
-
-    button:hover {
-      background-color: #00000033;
-    }
-
-    button:active  {
-      background-color: #00000033;
-      transform: scale(0.9);
-    }
+    border: solid 2px ${({ theme }) => theme.primary};
   }
 `;

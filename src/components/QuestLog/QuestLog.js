@@ -3,7 +3,7 @@ import {
   FinishedQuests,
   ActiveQuests,
   AvailableQuests,
-  NoQuests
+  NoQuests,
 } from './styled';
 import { Link } from 'react-router-dom';
 
@@ -15,8 +15,8 @@ const QuestLog = () => {
 
   return (
     <>
-      <h1>QuestLog</h1>
-      <h2>Finished Quests</h2>
+      <h1>Quests</h1>
+      <h2>Finished</h2>
       <FinishedQuests>
         {adventures.length > 0 ? (
           adventures.map(({ id, title }) => (
@@ -30,7 +30,7 @@ const QuestLog = () => {
         )}
       </FinishedQuests>
 
-      <h2>Active Quests</h2>
+      <h2>Active</h2>
       <ActiveQuests>
         {adventures.length > 0 ? (
           adventures.map(({ id, title, timeLeft }) => (
@@ -44,9 +44,9 @@ const QuestLog = () => {
         )}
       </ActiveQuests>
 
-      <h2>Available Quests</h2>
+      <h2>Available</h2>
       <AvailableQuests>
-        <li className='quiz'>
+        <li className="quiz">
           <h3>Start a Quiz</h3>
           <button>Start</button>
         </li>
