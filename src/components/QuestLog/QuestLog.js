@@ -6,26 +6,25 @@ import {
   NoQuests,
 } from "./styled";
 
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { QuestContext } from "context/quests";
 
 const QuestLog = () => {
   const { quests } = useContext(QuestContext);
 
-  const [selectedQuest, selectQuest] = useState();
-
   const activeQuests = quests.filter((q) => q.active);
   const availableQuests = quests.filter((q) => !q.active && q.available);
   const finishedQuests = quests.filter((q) => q.finished);
 
+  const history = useHistory();
+
   const selectQuestOnClick = (quest) => () => {
-    selectQuest(quest);
+    history.push("/quest/" + quest.id);
   };
 
   return (
     <>
-      {selectedQuest && <Redirect to={"/quest/" + selectedQuest.id}></Redirect>}
       <h1>Quests</h1>
       <h2>Active</h2>
       <ActiveQuests>

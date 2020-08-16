@@ -1,20 +1,19 @@
-import React from 'react';
-import { Follower, HomeButton } from './styled';
-import { useParams, useHistory } from 'react-router-dom';
+import React from "react";
+import { Follower, HomeButton } from "./styled";
+import { useParams, useHistory } from "react-router-dom";
 
-import adventures from 'data/adventures';
-
-const EndScreen = () => {
+const EndScreen = ({ quest }) => {
   const history = useHistory();
-  const { result } = useParams();
 
-  const onClickHandler = () => history.push('/');
+  const onClickHandler = () => history.push("/");
+
+  const success = true;
 
   return (
     <>
-      <h1>Finished: {adventures[0].title}</h1>
+      <h1>Finished: {quest.type.toUpperCase()}</h1>
 
-      {result === 'success' ? (
+      {success ? (
         <>
           <div>
             <strong>You were successful! </strong>
@@ -22,21 +21,21 @@ const EndScreen = () => {
           </div>
         </>
       ) : (
-        <div style={{ marginBottom: '40px' }}>
+        <div style={{ marginBottom: "40px" }}>
           <strong>You have failed.</strong> Better luck next time.
         </div>
       )}
 
-      {result === 'success' ? (
+      {success ? (
         <Follower>
           <img
-            src='https://rickandmortyapi.com/api/character/avatar/396.jpeg'
-            alt=''
+            src="https://rickandmortyapi.com/api/character/avatar/396.jpeg"
+            alt=""
           />
-          <p>Scary Teacher</p>
+          <p>{quest.follower.name}</p>
         </Follower>
       ) : null}
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: "center" }}>
         <HomeButton onClick={onClickHandler}> Go to dashboard </HomeButton>
       </div>
     </>
