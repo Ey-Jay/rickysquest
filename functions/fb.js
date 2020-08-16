@@ -5,17 +5,17 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       type: 'service_account',
       project_id: 'rickysquest-4dae6',
-      private_key_id: process.env.FB_KEY_ID,
+      private_key_id: process.env.REACT_APP_FB_KEY_ID,
       private_key:
-        process.env.FB_KEY[0] === '-'
-          ? process.env.FB_KEY
-          : JSON.parse(process.env.FB_KEY),
-      client_email: process.env.FB_CLIENT_EMAIL,
-      client_id: process.env.FB_CLIENT_ID,
+        process.env.REACT_APP_FB_KEY[0] === '-'
+          ? process.env.REACT_APP_FB_KEY
+          : JSON.parse(process.env.REACT_APP_FB_KEY),
+      client_email: process.env.REACT_APP_FB_CLIENT_EMAIL,
+      client_id: process.env.REACT_APP_FB_CLIENT_ID,
       auth_uri: 'https://accounts.google.com/o/oauth2/auth',
       token_uri: 'https://oauth2.googleapis.com/token',
       auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-      client_x509_cert_url: process.env.CLIENT_CERT_URL,
+      client_x509_cert_url: process.env.REACT_APP_CLIENT_CERT_URL,
     }),
   });
 }
