@@ -6,16 +6,16 @@ const questions = [
     answers: [
       'They have sex.',
       'They run amok and steal things.',
-      'They eat each other.'
+      'They eat each other.',
     ],
-    correctIndex: 1
+    correctIndex: 1,
   },
   {
     id: 2,
     question:
       "What's the name of the person who does the voices for the two main characters?",
     answers: ['Justin Roiland', 'Seth McFarlane', 'Dan Harmon'],
-    correctIndex: 0
+    correctIndex: 0,
   },
   {
     id: 3,
@@ -24,9 +24,9 @@ const questions = [
     answers: [
       "Kelly Bundy in 'Married... with Children'",
       "Lily Aldrin in 'How I Met Your Mother'",
-      "Dr. Elliot Reid in 'Scrubs'"
+      "Dr. Elliot Reid in 'Scrubs'",
     ],
-    correctIndex: 2
+    correctIndex: 2,
   },
   {
     id: 4,
@@ -35,10 +35,10 @@ const questions = [
     answers: [
       'The Flesh Curtains',
       'Intergalactic Schwift',
-      'Crumply Crumplestein'
+      'Crumply Crumplestein',
     ],
-    correctIndex: 0
-  }
+    correctIndex: 0,
+  },
 ];
 
 export default questions;

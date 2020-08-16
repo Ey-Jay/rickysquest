@@ -1,3 +1,3 @@
-import { GameContext, GameContextProvider } from "./Game";
+import { GameContext, GameContextProvider } from './Game';
 
 export { GameContext, GameContextProvider };

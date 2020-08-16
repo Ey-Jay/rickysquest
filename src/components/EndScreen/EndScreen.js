@@ -1,11 +1,11 @@
-import React from "react";
-import { Follower, HomeButton } from "./styled";
-import { useParams, useHistory } from "react-router-dom";
+import React from 'react';
+import { Follower, HomeButton } from './styled';
+import { useParams, useHistory } from 'react-router-dom';
 
 const EndScreen = ({ quest }) => {
   const history = useHistory();
 
-  const onClickHandler = () => history.push("/");
+  const onClickHandler = () => history.push('/');
 
   const success = true;
 
@@ -21,7 +21,7 @@ const EndScreen = ({ quest }) => {
           </div>
         </>
       ) : (
-        <div style={{ marginBottom: "40px" }}>
+        <div style={{ marginBottom: '40px' }}>
           <strong>You have failed.</strong> Better luck next time.
         </div>
       )}
@@ -32,7 +32,7 @@ const EndScreen = ({ quest }) => {
           <p>{quest.follower.name}</p>
         </Follower>
       ) : null}
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: 'center' }}>
         <HomeButton onClick={onClickHandler}> Go to dashboard </HomeButton>
       </div>
     </>

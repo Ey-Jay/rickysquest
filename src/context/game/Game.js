@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Quests from "data/quests";
+import Quests from 'data/quests';
 
 export const GameContext = React.createContext([]);
 

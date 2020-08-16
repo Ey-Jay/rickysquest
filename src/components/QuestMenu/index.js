@@ -1,3 +1,3 @@
-import QuestMenu from "./QuestMenu";
+import QuestMenu from './QuestMenu';
 
 export default QuestMenu;

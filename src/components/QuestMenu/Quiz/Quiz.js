@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { Container } from "./styled";
+import React, { useContext } from 'react';
+import { Container } from './styled';
 
-import { QuestContext } from "context/game";
+import { QuestContext } from 'context/game';
 
-import Question from "./Question";
+import Question from './Question';
 
-import useQuestions from "./useQuestions";
+import useQuestions from './useQuestions';
 
 const Quiz = ({ quest, onSuccess }) => {
   const onSubmit = (e) => {

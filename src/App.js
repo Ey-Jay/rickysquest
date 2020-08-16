@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import { AuthContext } from "context/AuthProvider";
-import PrivateRoute from "components/PrivateRoute";
+import { AuthContext } from 'context/AuthProvider';
+import PrivateRoute from 'components/PrivateRoute';
 
-import Persona from "components/Persona";
-import QuestLog from "components/QuestLog";
-import QuestMenu from "components/QuestMenu";
-import EndScreen from "components/EndScreen";
-import SignIn from "components/SignIn";
-import Navbar from "components/Navbar";
+import Persona from 'components/Persona';
+import QuestLog from 'components/QuestLog';
+import QuestMenu from 'components/QuestMenu';
+import EndScreen from 'components/EndScreen';
+import SignIn from 'components/SignIn';
+import Navbar from 'components/Navbar';
 
-import { Content } from "./App.styled.js";
+import { Content } from './App.styled.js';
 
 function App() {
   const { currentUser } = useContext(AuthContext);

@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react';
 import {
   FinishedQuests,
   ActiveQuests,
   AvailableQuests,
   NoQuests,
-} from "./styled";
+} from './styled';
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-import { GameContext } from "context/game";
+import { GameContext } from 'context/game';
 
 const QuestLog = () => {
   const { quests } = useContext(GameContext);
@@ -20,7 +20,7 @@ const QuestLog = () => {
   const history = useHistory();
 
   const selectQuestOnClick = (quest) => () => {
-    history.push("/quest/" + quest.id);
+    history.push('/quest/' + quest.id);
   };
 
   return (

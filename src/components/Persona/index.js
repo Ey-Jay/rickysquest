@@ -1,2 +1,2 @@
-import Persona from "./Persona";
+import Persona from './Persona';
 export default Persona;

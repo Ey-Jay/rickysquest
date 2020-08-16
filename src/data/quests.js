@@ -1,12 +1,12 @@
-import adventures from "./adventures";
+import adventures from './adventures';
 
-import questions from "./questions";
+import questions from './questions';
 
-import { quizFollowers, adventureFollowers } from "./followers";
+import { quizFollowers, adventureFollowers } from './followers';
 
 const quiz_quests = quizFollowers.map((follower, index) => ({
-  id: "quiz-" + index,
-  type: "quiz",
+  id: 'quiz-' + index,
+  type: 'quiz',
   active: false,
   available: true,
   finished: false,
@@ -16,9 +16,9 @@ const quiz_quests = quizFollowers.map((follower, index) => ({
 }));
 
 const adventure_quests = quizFollowers.map((follower, index) => ({
-  id: "adventure-" + index,
+  id: 'adventure-' + index,
 
-  type: "adventure",
+  type: 'adventure',
   active: false,
   available: true,
   finished: false,
