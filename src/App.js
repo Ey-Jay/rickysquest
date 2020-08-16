@@ -6,7 +6,7 @@ import PrivateRoute from "components/PrivateRoute";
 
 import Persona from "components/Persona";
 import QuestLog from "components/QuestLog";
-import Quest from "components/Quest";
+import QuestMenu from "components/QuestMenu";
 import EndScreen from "components/EndScreen";
 import SignIn from "components/SignIn";
 import Navbar from "components/Navbar";
@@ -23,7 +23,7 @@ function App() {
           <Route path="/signin">
             <SignIn />
           </Route>
-          <PrivateRoute path="/quest/:questId" component={Quest} />
+          <PrivateRoute path="/quest/:questId" component={QuestMenu} />
           <PrivateRoute path="/persona" component={Persona} />
           <PrivateRoute exact path="/" component={QuestLog} />
           <Route path="*">

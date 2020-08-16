@@ -8,10 +8,10 @@ import {
 
 import { useHistory } from "react-router-dom";
 
-import { QuestContext } from "context/quests";
+import { GameContext } from "context/game";
 
 const QuestLog = () => {
-  const { quests } = useContext(QuestContext);
+  const { quests } = useContext(GameContext);
 
   const activeQuests = quests.filter((q) => q.active);
   const availableQuests = quests.filter((q) => !q.active && q.available);

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 import Quests from "data/quests";
 
-export const QuestContext = React.createContext([]);
+export const GameContext = React.createContext([]);
 
-export const QuestContextProvider = ({ children }) => {
+export const GameContextProvider = ({ children }) => {
   const [quests, setQuests] = useState(Quests);
+
+  const [characters, setCharacters] = useState([]);
 
   const setQuestFinished = (quest) => {
     const new_quests = [...quests];
@@ -24,14 +26,16 @@ export const QuestContextProvider = ({ children }) => {
 */
 
   return (
-    <QuestContext.Provider
+    <GameContext.Provider
       value={{
         quests,
         setQuests,
         setQuestFinished,
+        characters,
+        setCharacters,
       }}
     >
       {children}
-    </QuestContext.Provider>
+    </GameContext.Provider>
   );
 };

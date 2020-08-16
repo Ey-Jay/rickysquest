@@ -1,20 +1,17 @@
 import React, { useContext } from "react";
 import { Container } from "./styled";
 
-import { QuestContext } from "context/quests";
+import { QuestContext } from "context/game";
 
 import Question from "./Question";
 
 import useQuestions from "./useQuestions";
 
-const Quiz = ({ quest }) => {
-  const { setQuestFinished } = useContext(QuestContext);
-
+const Quiz = ({ quest, onSuccess }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (validateAnswers()) {
-      alert("Correct!");
-      setQuestFinished(quest);
+      onSuccess();
     }
   };
 

@@ -28,10 +28,7 @@ const EndScreen = ({ quest }) => {
 
       {success ? (
         <Follower>
-          <img
-            src="https://rickandmortyapi.com/api/character/avatar/396.jpeg"
-            alt=""
-          />
+          <img src={quest.follower.img} alt="" />
           <p>{quest.follower.name}</p>
         </Follower>
       ) : null}

@@ -6,7 +6,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { AuthProvider } from "context/AuthProvider";
 import { ThemeProvider } from "styled-components";
 import { theme, GlobalStyles } from "theme";
-import { QuestContextProvider } from "context/quests";
+import { GameContextProvider } from "context/game";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql/",
@@ -18,12 +18,12 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <AuthProvider>
         <ThemeProvider theme={theme}>
-          <QuestContextProvider>
+          <GameContextProvider>
             <Router>
               <GlobalStyles />
               <App />
             </Router>
-          </QuestContextProvider>
+          </GameContextProvider>
         </ThemeProvider>
       </AuthProvider>
     </ApolloProvider>
