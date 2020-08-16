@@ -17,22 +17,16 @@ export const GameContextProvider = ({ children }) => {
       finished: true,
       available: false,
     };
+    setCharacters([...characters, quest.follower]);
     setQuests(new_quests);
   };
-  /*
-  const finishedQuests = quests.filter((x) => x.finished);
-  const unfinishedQuests = quests.filter((x) => !x.finished);
-
-*/
 
   return (
     <GameContext.Provider
       value={{
         quests,
-        setQuests,
         setQuestFinished,
         characters,
-        setCharacters,
       }}
     >
       {children}

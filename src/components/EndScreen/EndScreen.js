@@ -28,7 +28,7 @@ const EndScreen = ({ quest }) => {
 
       {success ? (
         <Follower>
-          <img src={quest.follower.img} alt="" />
+          <img src={quest.follower.image} alt="" />
           <p>{quest.follower.name}</p>
         </Follower>
       ) : null}

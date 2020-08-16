@@ -17,9 +17,11 @@ const Quiz = ({ quest, onSuccess }) => {
 
   const questions = quest.questions;
 
-  const { selectedAnswerID, getSetAnswer, validateAnswers } = useQuestions(
-    questions
-  );
+  const {
+    answerSelectionArray,
+    getSelectAnswer,
+    validateAnswers,
+  } = useQuestions(questions);
 
   return (
     <Container>
@@ -29,8 +31,8 @@ const Quiz = ({ quest, onSuccess }) => {
         <Question
           key={i}
           {...question}
-          selectedAnswer={selectedAnswerID[i]}
-          setAnswersGiven={getSetAnswer(i)}
+          selectedAnswer={answerSelectionArray[i]}
+          setAnswersGiven={getSelectAnswer(i)}
         />
       ))}
 

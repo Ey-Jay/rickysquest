@@ -1,25 +1,25 @@
 import { useState } from "react";
 
 const useQuestions = (questions) => {
-  const [selectedAnswerID, setAnswersSelected] = useState(
+  const [answerSelectionArray, setAnswerSelectionArray] = useState(
     Array(questions.length).fill(-1)
   );
 
-  const getSetAnswer = (index) => (answer) => {
-    const new_answersGiven = [...selectedAnswerID];
+  const getSelectAnswer = (index) => (answer) => {
+    const new_answersGiven = [...answerSelectionArray];
     new_answersGiven[index] = answer;
-    setAnswersSelected(new_answersGiven);
+    setAnswerSelectionArray(new_answersGiven);
   };
 
   const validateAnswers = () => {
-    return !selectedAnswerID.some(
+    return !answerSelectionArray.some(
       (answer, id) => questions[id].correctIndex !== answer
     );
   };
   return {
-    selectedAnswerID,
-    setAnswersSelected,
-    getSetAnswer,
+    answerSelectionArray,
+
+    getSelectAnswer,
     validateAnswers,
   };
 };
