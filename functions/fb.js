@@ -20,6 +20,8 @@ if (!admin.apps.length) {
   });
 }
 
+console.log(process.env.REACT_APP_FB_KEY);
+
 const firestore = admin.firestore();
 
 exports.handler = async (event) => {
