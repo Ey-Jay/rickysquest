@@ -4,13 +4,13 @@ if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       type: 'service_account',
-      projectId: 'rickysquest-4dae6',
+      project_id: 'rickysquest-4dae6',
       private_key_id: process.env.FB_KEY_ID,
-      privateKey:
+      private_key:
         process.env.FB_KEY[0] === '-'
           ? process.env.FB_KEY
           : JSON.parse(process.env.FB_KEY),
-      clientEmail: process.env.FB_CLIENT_EMAIL,
+      client_email: process.env.FB_CLIENT_EMAIL,
       client_id: process.env.CLIENT_ID,
       auth_uri: 'https://accounts.google.com/o/oauth2/auth',
       token_uri: 'https://oauth2.googleapis.com/token',
