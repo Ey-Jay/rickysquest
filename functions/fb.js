@@ -1,12 +1,18 @@
 const admin = require('firebase-admin');
 
+const firebase_private_key_b64 = Buffer.from(
+  process.env.REACT_APP_FB_KEY,
+  'base64'
+);
+const firebase_private_key = firebase_private_key_b64.toString('utf8');
+
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       type: 'service_account',
       project_id: 'rickysquest-4dae6',
       private_key_id: process.env.REACT_APP_FB_KEY_ID,
-      private_key: process.env.REACT_APP_FB_KEY.replace(/\\n/g, '\n'),
+      private_key: firebase_private_key,
       client_email: process.env.REACT_APP_FB_CLIENT_EMAIL,
       client_id: process.env.REACT_APP_FB_CLIENT_ID,
       auth_uri: 'https://accounts.google.com/o/oauth2/auth',
