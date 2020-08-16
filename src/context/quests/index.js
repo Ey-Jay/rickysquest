@@ -1,4 +1,3 @@
-import { QuestContext, QuestContextProvider } from './Quests';
-export default QuestContext;
+import { QuestContext, QuestContextProvider } from "./Quests";
 
-export { QuestContextProvider };
+export { QuestContext, QuestContextProvider };

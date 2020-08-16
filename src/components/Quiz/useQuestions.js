@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const useQuestions = (questions) => {
   const [selectedAnswerID, setAnswersSelected] = useState(
@@ -16,7 +16,12 @@ const useQuestions = (questions) => {
       (answer, id) => questions[id].correctAnswerId !== answer
     );
   };
-  return [selectedAnswerID, setAnswersSelected, getSetAnswer, validateAnswers];
+  return {
+    selectedAnswerID,
+    setAnswersSelected,
+    getSetAnswer,
+    validateAnswers,
+  };
 };
 
 export default useQuestions;
