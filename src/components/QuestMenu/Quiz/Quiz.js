@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container } from './styled';
 
-import { QuestContext } from 'context/game';
+// import { QuestContext } from 'context/game';
 
 import Question from './Question';
 

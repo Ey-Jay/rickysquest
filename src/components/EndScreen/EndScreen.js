@@ -1,6 +1,6 @@
 import React from 'react';
 import { Follower, HomeButton } from './styled';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const EndScreen = ({ quest }) => {
   const history = useHistory();

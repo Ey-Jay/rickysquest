@@ -7,7 +7,7 @@ import PrivateRoute from 'components/PrivateRoute';
 import Persona from 'components/Persona';
 import QuestLog from 'components/QuestLog';
 import QuestMenu from 'components/QuestMenu';
-import EndScreen from 'components/EndScreen';
+// import EndScreen from 'components/EndScreen';
 import SignIn from 'components/SignIn';
 import Navbar from 'components/Navbar';
 
