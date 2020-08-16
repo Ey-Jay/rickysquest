@@ -24,7 +24,7 @@ function App() {
             <SignIn />
           </Route>
           <PrivateRoute path="/endscreen/:result" component={EndScreen} />
-          <PrivateRoute path="/quest" component={Quest} />
+          <PrivateRoute path="/quest/:questId" component={Quest} />
           <PrivateRoute path="/persona" component={Persona} />
           <PrivateRoute exact path="/" component={QuestLog} />
           <Route path="*">

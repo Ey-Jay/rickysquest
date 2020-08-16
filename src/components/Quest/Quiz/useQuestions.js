@@ -13,7 +13,7 @@ const useQuestions = (questions) => {
 
   const validateAnswers = () => {
     return !selectedAnswerID.some(
-      (answer, id) => questions[id].correctAnswerId !== answer
+      (answer, id) => questions[id].correctIndex !== answer
     );
   };
   return {

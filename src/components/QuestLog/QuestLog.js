@@ -9,25 +9,23 @@ import {
 import { Redirect } from "react-router-dom";
 
 import { QuestContext } from "context/quests";
-import quests from "data/quests";
 
 const QuestLog = () => {
-  const { setQuest } = useContext(QuestContext);
+  const { quests } = useContext(QuestContext);
 
-  const [buttonPressed, setButtonPressed] = useState(false);
+  const [selectedQuest, selectQuest] = useState();
 
   const activeQuests = quests.filter((q) => q.active);
   const availableQuests = quests.filter((q) => !q.active && q.available);
   const finishedQuests = quests.filter((q) => q.finished);
 
-  const onActiveClick = (quest) => () => {
-    setQuest(quest);
-    setButtonPressed(true);
+  const selectQuestOnClick = (quest) => () => {
+    selectQuest(quest);
   };
 
   return (
     <>
-      {buttonPressed && <Redirect to="/quest"></Redirect>}
+      {selectedQuest && <Redirect to={"/quest/" + selectedQuest.id}></Redirect>}
       <h1>Quests</h1>
       <h2>Active</h2>
       <ActiveQuests>
@@ -50,7 +48,7 @@ const QuestLog = () => {
               <h3>
                 {quest.type.toUpperCase()}: {quest.follower.name}
               </h3>
-              <button onClick={onActiveClick(quest)}>Start</button>
+              <button onClick={selectQuestOnClick(quest)}>Start</button>
             </li>
           ))
         ) : (

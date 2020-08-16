@@ -1,29 +1,34 @@
 import React, { useState } from "react";
 
+import Quests from "data/quests";
+
 export const QuestContext = React.createContext([]);
 
 export const QuestContextProvider = ({ children }) => {
-  const [quest, setQuest] = useState();
+  const [quests, setQuests] = useState(Quests);
 
-  /*
-  const setQuestFinished = (index) => {
+  const setQuestFinished = (quest) => {
     const new_quests = [...quests];
-    new_quests[index] = { ...quests[index], finished: true };
+    const index = new_quests.findIndex((q) => q.id === quest.id);
+    new_quests[index] = {
+      ...new_quests[index],
+      finished: true,
+      available: false,
+    };
     setQuests(new_quests);
   };
-
+  /*
   const finishedQuests = quests.filter((x) => x.finished);
   const unfinishedQuests = quests.filter((x) => !x.finished);
 
-  const getQuestById = (id) => {
-    return quests.filter((x) => x.id === id)[0];
-  };
 */
+
   return (
     <QuestContext.Provider
       value={{
-        quest,
-        setQuest,
+        quests,
+        setQuests,
+        setQuestFinished,
       }}
     >
       {children}
