@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .vscode
+/functions/serviceAccount.json
 
 # dependencies
 /node_modules
@@ -25,3 +26,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Local Netlify folder
+.netlify

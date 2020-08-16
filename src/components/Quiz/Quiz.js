@@ -18,7 +18,7 @@ const Quiz = () => {
 
   const [
     selectedAnswerID,
-    setAnswersSelected,
+    // setAnswersSelected,
     getSetAnswer,
     validateAnswers,
   ] = useQuestions(questions);
