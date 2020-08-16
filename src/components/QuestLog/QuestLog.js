@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   FinishedQuests,
   ActiveQuests,
   AvailableQuests,
   NoQuests,
-} from './styled';
+} from "./styled";
 
 // import QuestContext from 'context/quests';
-import adventures from 'data/adventures';
+import adventures from "data/adventures";
 
 const QuestLog = () => {
   // const { unfinishedQuests, finishedQuests } = useContext(QuestContext);
@@ -15,19 +15,6 @@ const QuestLog = () => {
   return (
     <>
       <h1>Quests</h1>
-      <h2>Finished</h2>
-      <FinishedQuests>
-        {adventures.length > 0 ? (
-          adventures.map(({ id, title }) => (
-            <li key={id}>
-              <h3>{title}</h3>
-              <button>See Results</button>
-            </li>
-          ))
-        ) : (
-          <NoQuests>No Finished Quests</NoQuests>
-        )}
-      </FinishedQuests>
 
       <h2>Active</h2>
       <ActiveQuests>
@@ -60,6 +47,20 @@ const QuestLog = () => {
           <NoQuests>No Available Adventures</NoQuests>
         )}
       </AvailableQuests>
+
+      <h2>Finished</h2>
+      <FinishedQuests>
+        {adventures.length > 0 ? (
+          adventures.map(({ id, title }) => (
+            <li key={id}>
+              <h3>{title}</h3>
+              <button>See Results</button>
+            </li>
+          ))
+        ) : (
+          <NoQuests>No Finished Quests</NoQuests>
+        )}
+      </FinishedQuests>
     </>
   );
 };
