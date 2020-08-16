@@ -6,7 +6,10 @@ if (!admin.apps.length) {
       type: 'service_account',
       project_id: 'rickysquest-4dae6',
       private_key_id: process.env.REACT_APP_FB_KEY_ID,
-      private_key: process.env.REACT_APP_FB_KEY.replace(/\\n/g, '\n'),
+      private_key:
+        process.env.REACT_APP_FB_KEY[0] === '-'
+          ? process.env.REACT_APP_FB_KEY
+          : JSON.parse(process.env.REACT_APP_FB_KEY),
       client_email: process.env.REACT_APP_FB_CLIENT_EMAIL,
       client_id: process.env.REACT_APP_FB_CLIENT_ID,
       auth_uri: 'https://accounts.google.com/o/oauth2/auth',
