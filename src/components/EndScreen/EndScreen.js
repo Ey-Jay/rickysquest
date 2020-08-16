@@ -2,19 +2,18 @@ import React from 'react';
 import { Follower, HomeButton } from './styled';
 import { useParams, useHistory } from 'react-router-dom';
 
-import adventures from 'data/adventures';
-
-const EndScreen = () => {
+const EndScreen = ({ quest }) => {
   const history = useHistory();
-  const { result } = useParams();
 
   const onClickHandler = () => history.push('/');
 
+  const success = true;
+
   return (
     <>
-      <h1>Finished: {adventures[0].title}</h1>
+      <h1>Finished: {quest.type.toUpperCase()}</h1>
 
-      {result === 'success' ? (
+      {success ? (
         <>
           <div>
             <strong>You were successful! </strong>
@@ -27,13 +26,10 @@ const EndScreen = () => {
         </div>
       )}
 
-      {result === 'success' ? (
+      {success ? (
         <Follower>
-          <img
-            src='https://rickandmortyapi.com/api/character/avatar/396.jpeg'
-            alt=''
-          />
-          <p>Scary Teacher</p>
+          <img src={quest.follower.image} alt="" />
+          <p>{quest.follower.name}</p>
         </Follower>
       ) : null}
       <div style={{ textAlign: 'center' }}>
