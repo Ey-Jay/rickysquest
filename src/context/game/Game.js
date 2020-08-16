@@ -17,6 +17,7 @@ export const GameContextProvider = ({ children }) => {
       finished: true,
       available: false,
     };
+    setCharacters([...characters, quest.follower]);
     setQuests(new_quests);
   };
   /*
