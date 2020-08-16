@@ -4,7 +4,10 @@ if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       clientEmail: process.env.FB_CLIENT_EMAIL,
-      privateKey: process.env.FB_KEY,
+      privateKey:
+        process.env.FB_KEY[0] === '-'
+          ? process.env.FB_KEY
+          : JSON.parse(process.env.FB_KEY),
       projectId: 'rickysquest-4dae6',
     }),
   });
