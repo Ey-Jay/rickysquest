@@ -6,7 +6,10 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       clientEmail: process.env.FB_CLIENT_EMAIL,
       client_id: process.env.CLIENT_ID,
-      privateKey: process.env.FB_KEY,
+      privateKey:
+        process.env.FB_KEY[0] === '-'
+          ? process.env.FB_KEY
+          : JSON.parse(process.env.FB_KEY),
       private_key_id: process.env.FB_KEY_ID,
       projectId: 'rickysquest-4dae6',
       auth_uri: 'https://accounts.google.com/o/oauth2/auth',
