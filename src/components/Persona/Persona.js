@@ -22,7 +22,7 @@ const Persona = () => {
 
   useEffect(() => {
     setFollowersWithDB();
-  }, []);
+  }, [setFollowersWithDB]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;

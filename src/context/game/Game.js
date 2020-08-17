@@ -50,6 +50,7 @@ export const GameContextProvider = ({ children }) => {
   useEffect(() => {
     setFollowersWithDB();
     setQuestsWithDB();
+    // eslint-disable-next-line
   }, [currentUser]);
 
   const setQuestFinished = (quest) => {
