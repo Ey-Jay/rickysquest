@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import {
   FinishedQuests,
-  ActiveQuests,
+  // ActiveQuests,
   AvailableQuests,
   NoQuests,
 } from './styled';
@@ -13,7 +13,7 @@ import { GameContext } from 'context/game';
 const QuestLog = () => {
   const { quests } = useContext(GameContext);
 
-  const activeQuests = quests.filter((q) => q.active);
+  // const activeQuests = quests.filter((q) => q.active);
   const availableQuests = quests.filter((q) => !q.active && q.available);
   const finishedQuests = quests.filter((q) => q.finished);
 
@@ -26,7 +26,7 @@ const QuestLog = () => {
   return (
     <>
       <h1>Quests</h1>
-      <h2>Active</h2>
+      {/* <h2>Active</h2>
       <ActiveQuests>
         {activeQuests.length > 0 ? (
           activeQuests.map(({ id, follower, type }) => (
@@ -38,7 +38,7 @@ const QuestLog = () => {
         ) : (
           <NoQuests>No Active Quests</NoQuests>
         )}
-      </ActiveQuests>
+      </ActiveQuests> */}
       <h2>Available</h2>
       <AvailableQuests>
         {availableQuests.length > 0 ? (

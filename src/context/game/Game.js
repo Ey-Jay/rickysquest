@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import Quests from 'data/quests';
+import allQuests from 'data/quests';
 
 export const GameContext = React.createContext([]);
 
 export const GameContextProvider = ({ children }) => {
-  const [quests, setQuests] = useState(Quests);
+  const [quests, setQuests] = useState(allQuests);
 
   const [characters, setCharacters] = useState([]);
 
