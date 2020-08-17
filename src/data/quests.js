@@ -7,7 +7,7 @@ import { quizFollowers /*, adventureFollowers */ } from './followers';
 const quiz_quests = quizFollowers.map((follower, index) => ({
   id: 'quiz-' + index,
   type: 'quiz',
-  active: false,
+  // active: false,
   available: true,
   finished: false,
 
