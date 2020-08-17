@@ -14,7 +14,7 @@ const QuestLog = () => {
   const { quests } = useContext(GameContext);
 
   // const activeQuests = quests.filter((q) => q.active);
-  const availableQuests = quests.filter((q) => !q.active && q.available);
+  const availableQuests = quests.filter((q) => q.available);
   const finishedQuests = quests.filter((q) => q.finished);
 
   const history = useHistory();

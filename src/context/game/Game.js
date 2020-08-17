@@ -18,34 +18,39 @@ export const GameContextProvider = ({ children }) => {
   const [quests, setQuests] = useState(allQuests);
   const [characters, setCharacters] = useState([]);
 
-  useEffect(() => {
-    async function setFollowersWithDB() {
-      if (currentUser) {
-        const followersFromDB = await getFollowersFromDB(currentUser.uid);
+  async function setFollowersWithDB() {
+    if (currentUser) {
+      const followersFromDB = await getFollowersFromDB(currentUser.uid);
 
-        const newFollowers = followersFromDB.map((item) => {
-          return allFollowers.find((foll) => item.id === foll.id);
-        });
+      const newFollowers = followersFromDB
+        ? followersFromDB.map((item) => {
+            return allFollowers.find((foll) => item.id === foll.id);
+          })
+        : [];
 
-        setCharacters(newFollowers);
-      }
+      setCharacters(newFollowers);
     }
-    setFollowersWithDB();
+  }
 
-    async function setQuestsWithDB() {
-      if (currentUser) {
-        const newQuests = [...allQuests];
-        const questsFromDB = await getQuestsFromDB(currentUser.uid);
+  async function setQuestsWithDB() {
+    if (currentUser) {
+      const newQuests = [...allQuests];
+      const questsFromDB = await getQuestsFromDB(currentUser.uid);
 
+      if (questsFromDB)
         questsFromDB.forEach((item) => {
           newQuests[item.id].finished = true;
-          newQuests[item.id].available = true;
+          newQuests[item.id].available = false;
         });
 
-        setQuests(newQuests);
-      }
+      setQuests(newQuests);
     }
+  }
+
+  useEffect(() => {
+    setFollowersWithDB();
     setQuestsWithDB();
+    // eslint-disable-next-line
   }, [currentUser]);
 
   const setQuestFinished = (quest) => {
@@ -68,6 +73,7 @@ export const GameContextProvider = ({ children }) => {
         quests,
         setQuestFinished,
         characters,
+        setFollowersWithDB,
       }}
     >
       {children}

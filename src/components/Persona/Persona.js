@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AvatarContainer, Collection, Follower } from './styled';
 import { ReactComponent as AvatarSVG } from 'assets/avatar.svg';
 import { useQuery, gql } from '@apollo/client';
@@ -18,8 +18,11 @@ const CHARACTERS = gql`
 
 const Persona = () => {
   const { loading, error, data } = useQuery(CHARACTERS);
+  const { characters, setFollowersWithDB } = useContext(GameContext);
 
-  const { characters } = useContext(GameContext);
+  useEffect(() => {
+    setFollowersWithDB();
+  }, [setFollowersWithDB]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
