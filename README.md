@@ -1,6 +1,6 @@
 # Ricky's Quest
 
-Ricky's Quest is a Rick and Morty game developed by [Erick Jansen](https://github.com/Ey-Jay), [Joss Doebler](https://github.com/jossdoe), and [Justin Horn](https://github.com/JustinHorn). We used the [Rick and Morty free GRAPHQL API](https://rickandmortyapi.com/documentation) the characters data. We are using [Google Firebae](https://firebase.google.com/) for Authentication and Database. Our frontend is written using React, bootstrapped using [Create React App](https://github.com/facebook/create-react-app).
+Ricky's Quest is a Rick and Morty game developed by [Erick Jansen](https://github.com/Ey-Jay), [Joss Doebler](https://github.com/jossdoe), and [Justin Horn](https://github.com/JustinHorn). We used the [Rick and Morty free GRAPHQL API](https://rickandmortyapi.com/documentation) to get the characters data. We are using [Google Firebae](https://firebase.google.com/) for Authentication and Database. Our frontend is written using React, bootstrapped using [Create React App](https://github.com/facebook/create-react-app).
 
 We are hosted on Netlify and using Netlify Functions.
 
