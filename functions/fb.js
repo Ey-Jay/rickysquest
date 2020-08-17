@@ -4,7 +4,7 @@ if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       type: 'service_account',
-      project_id: 'rickysquest-4dae6',
+      project_id: process.env.REACT_APP_PROJECT_ID,
       private_key_id: process.env.REACT_APP_FB_KEY_ID,
       private_key: process.env.REACT_APP_FB_KEY.replace(/\\n/g, '\n'),
       client_email: process.env.REACT_APP_FB_CLIENT_EMAIL,

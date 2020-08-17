@@ -1,2 +1,9 @@
 [build]
   functions = "functions"
+[template.environment]
+  REACT_APP_PROJECT_ID="add your own project id"
+  REACT_APP_FB_KEY_ID="add your own service account key id"
+  REACT_APP_FB_KEY="add your own service account key"
+  REACT_APP_FB_CLIENT_ID="add your own client id"
+  REACT_APP_FB_CLIENT_EMAIL="add your own client email"
+  REACT_APP_CLIENT_CERT_URL="add your own certificate url"

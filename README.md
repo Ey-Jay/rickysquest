@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Ricky's Quest
 
-## Available Scripts
+Ricky's Quest is a Rick and Morty game developed by [Erick Jansen](https://github.com/Ey-Jay), [Joss Doebler](https://github.com/jossdoe), and [Justin Horn](https://github.com/JustinHorn). We used the [Rick and Morty free GRAPHQL API](https://rickandmortyapi.com/documentation) the characters data. We are using [Google Firebae](https://firebase.google.com/) for Authentication and Database. Our frontend is written using React, bootstrapped using [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+We are hosted on Netlify and using Netlify Functions.
 
-### `npm start`
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fce8d6bf-5f8a-4c48-98fa-ca839dcdffb4/deploy-status)](https://app.netlify.com/sites/rickysquest/deploys)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Create Firebase Account
 
-### `npm test`
+Add a new Project in the [firebase console](https://console.firebase.google.com).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Set up authentication**
+Go to sign-in method and enable the Google provider.
 
-### `npm run build`
+**Database**
+Choose cloud firestore.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Local development
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Clone this repo.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You need to have node v10+ and npm installed.
+Once you have verified you got these. `npm i -g netlify-cli`
 
-### `npm run eject`
+`cd` to the root of the repository and `npm i` to install all dependencies.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[![deploy to netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Ey-Jay/rickysquest)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Firebase Service Account Key
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Once deployed to netlify.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Go to your firebase project settings.
+Under "Service Accounts", Generate a new private key.
+Use these values provided to you in your json key, to populate your netlify env variables.
 
-## Learn More
+#### Netlify dev
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Go to the root of the repository, and run `netlify link` to link your hosted env variables with your local repo. Then run `netlify dev` to work on your cloud functions locally and also your front end. Have fun.
