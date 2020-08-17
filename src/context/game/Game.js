@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import allQuests from 'data/quests';
-import { gainFollower } from './firebase';
+import { persistFollower, persistQuest } from './firebase';
 import { AuthContext } from '../../context/AuthProvider';
 
 export const GameContext = React.createContext([]);
@@ -20,7 +20,8 @@ export const GameContextProvider = ({ children }) => {
       finished: true,
       available: false,
     };
-    gainFollower(index, currentUser.uid);
+    persistFollower(quest.follower.id, currentUser.uid);
+    persistQuest(index, currentUser.uid);
     setCharacters([...characters, quest.follower]);
     setQuests(newQuests);
   };
