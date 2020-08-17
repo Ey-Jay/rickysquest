@@ -1,7 +1,7 @@
 import { db } from '../../base';
 
-export const persistFollower = async (fid, uid) => {
-  const oldFollowers = await db
+export const getFollowersFromDB = async (uid) => {
+  const followers = await db
     .collection('users')
     .doc(uid)
     .get()
@@ -9,6 +9,25 @@ export const persistFollower = async (fid, uid) => {
       return res.data().followers;
     })
     .catch((err) => console.error(err));
+
+  return followers;
+};
+
+export const getQuestsFromDB = async (uid) => {
+  const quests = await db
+    .collection('users')
+    .doc(uid)
+    .get()
+    .then((res) => {
+      return res.data().quests;
+    })
+    .catch((err) => console.error(err));
+
+  return quests;
+};
+
+export const persistFollower = async (fid, uid) => {
+  const oldFollowers = await getFollowersFromDB(uid);
 
   return db
     .collection('users')
@@ -19,14 +38,7 @@ export const persistFollower = async (fid, uid) => {
 };
 
 export const persistQuest = async (qid, uid) => {
-  const oldQuests = await db
-    .collection('users')
-    .doc(uid)
-    .get()
-    .then((res) => {
-      return res.data().quests;
-    })
-    .catch((err) => console.error(err));
+  const oldQuests = await getQuestsFromDB(uid);
 
   return db
     .collection('users')
