@@ -22,9 +22,11 @@ export const GameContextProvider = ({ children }) => {
     if (currentUser) {
       const followersFromDB = await getFollowersFromDB(currentUser.uid);
 
-      const newFollowers = followersFromDB.map((item) => {
-        return allFollowers.find((foll) => item.id === foll.id);
-      });
+      const newFollowers = followersFromDB
+        ? followersFromDB.map((item) => {
+            return allFollowers.find((foll) => item.id === foll.id);
+          })
+        : [];
 
       setCharacters(newFollowers);
     }
@@ -35,10 +37,11 @@ export const GameContextProvider = ({ children }) => {
       const newQuests = [...allQuests];
       const questsFromDB = await getQuestsFromDB(currentUser.uid);
 
-      questsFromDB.forEach((item) => {
-        newQuests[item.id].finished = true;
-        newQuests[item.id].available = false;
-      });
+      if (questsFromDB)
+        questsFromDB.forEach((item) => {
+          newQuests[item.id].finished = true;
+          newQuests[item.id].available = false;
+        });
 
       setQuests(newQuests);
     }
