@@ -30,11 +30,13 @@ exports.handler = async (event) => {
           .collection('users')
           .doc(event.body)
           .set({
+            registered: new Date(),
             followers: [
-              { id: 1, name: 'Rick Sanchez' },
-              { id: 2, name: 'Morty Smith' },
-              { id: 3, name: 'Beth Smith' },
+              { id: 1, acquired: new Date() },
+              { id: 2, acquired: new Date() },
+              { id: 3, acquired: new Date() },
             ],
+            quests: [],
           })
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
