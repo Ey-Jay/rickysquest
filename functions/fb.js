@@ -19,16 +19,16 @@ if (!admin.apps.length) {
 
 const firestore = admin.firestore();
 
-exports.handler = async (event) => {
+const handleSignIn = async (body) => {
   await firestore
     .collection('users')
-    .doc(event.body)
+    .doc(body.uid)
     .get()
     .then((doc) => {
       if (!doc.exists) {
         firestore
           .collection('users')
-          .doc(event.body)
+          .doc(body.uid)
           .set({
             registered: new Date(),
             followers: [
@@ -43,6 +43,12 @@ exports.handler = async (event) => {
       }
     })
     .catch((err) => console.log('error', err));
+};
+
+exports.handler = async (event) => {
+  const body = JSON.parse(event.body);
+
+  await handleSignIn(body);
 
   return {
     statusCode: 200,

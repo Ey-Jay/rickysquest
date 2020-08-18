@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   FinishedQuests,
   // ActiveQuests,
@@ -11,7 +11,12 @@ import { useHistory } from 'react-router-dom';
 import { GameContext } from 'context/game';
 
 const QuestLog = () => {
-  const { quests } = useContext(GameContext);
+  const { quests, setQuestsWithDB } = useContext(GameContext);
+
+  useEffect(() => {
+    setQuestsWithDB();
+    // eslint-disable-next-line
+  }, []);
 
   // const activeQuests = quests.filter((q) => q.active);
   const availableQuests = quests.filter((q) => q.available);
