@@ -74,6 +74,7 @@ export const GameContextProvider = ({ children }) => {
         setQuestFinished,
         characters,
         setFollowersWithDB,
+        setQuestsWithDB,
       }}
     >
       {children}

@@ -21,7 +21,7 @@ const SignIn = () => {
           headers: {
             'Content-Type': 'text/plain',
           },
-          body: result.user.uid,
+          body: JSON.stringify({ action: 'signin', uid: result.user.uid }),
         });
       })
       .then((res) => res.json().then((res) => console.log(res)))
