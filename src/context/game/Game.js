@@ -51,7 +51,7 @@ export const GameContextProvider = ({ children }) => {
     setFollowersWithDB();
     setQuestsWithDB();
     // eslint-disable-next-line
-  }, [currentUser]);
+  }, []);
 
   const setQuestFinished = (quest) => {
     const newQuests = [...quests];

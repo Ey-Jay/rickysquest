@@ -22,7 +22,8 @@ const Persona = () => {
 
   useEffect(() => {
     setFollowersWithDB();
-  }, [setFollowersWithDB]);
+    // eslint-disable-next-line
+  }, []);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
