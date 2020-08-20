@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React /*, { useContext, useEffect }*/ from 'react';
 import { AvatarContainer, Collection, Follower } from './styled';
 import { ReactComponent as AvatarSVG } from 'assets/avatar.svg';
 import { useQuery, gql } from '@apollo/client';
