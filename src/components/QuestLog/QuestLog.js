@@ -11,16 +11,18 @@ import { useHistory } from 'react-router-dom';
 import { GameContext } from 'context/game';
 
 const QuestLog = () => {
-  const { quests, setQuestsWithDB } = useContext(GameContext);
+  // const { quests, setQuestsWithDB } = useContext(GameContext);
 
-  useEffect(() => {
-    setQuestsWithDB();
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   setQuestsWithDB();
+  //   // eslint-disable-next-line
+  // }, []);
 
   // const activeQuests = quests.filter((q) => q.active);
-  const availableQuests = quests.filter((q) => q.available);
-  const finishedQuests = quests.filter((q) => q.finished);
+  const availableQuests = [];
+  const finishedQuests = [];
+  // const availableQuests = quests.filter((q) => q.available);
+  // const finishedQuests = quests.filter((q) => q.finished);
 
   const history = useHistory();
 
@@ -30,20 +32,7 @@ const QuestLog = () => {
 
   return (
     <>
-      <h1>Quests</h1>
-      {/* <h2>Active</h2>
-      <ActiveQuests>
-        {activeQuests.length > 0 ? (
-          activeQuests.map(({ id, follower, type }) => (
-            <li key={id}>
-              <h3>{follower.name}</h3>
-              <aside>____{type.toUpperCase()}____</aside>
-            </li>
-          ))
-        ) : (
-          <NoQuests>No Active Quests</NoQuests>
-        )}
-      </ActiveQuests> */}
+      <h1>Quizzes</h1>
       <h2>Available</h2>
       <AvailableQuests>
         {availableQuests.length > 0 ? (

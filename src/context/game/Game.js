@@ -1,80 +1,60 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useQuery, gql } from '@apollo/client';
+import { AuthContext } from 'context/AuthProvider';
+import getUserCharacters from 'base/getUserCharacters';
+import getUserQuizzes from 'base/getUserQuizzes';
 
-import allQuests from 'data/quests';
-import { allFollowers } from 'data/followers';
-import {
-  getFollowersFromDB,
-  getQuestsFromDB,
-  persistFollower,
-  persistQuest,
-} from './firebase';
-import { AuthContext } from '../../context/AuthProvider';
+const GET_CHARACTERS = (ids) => gql`
+  query Characters {
+    characters(id: [${[...ids]}]) {
+      id
+      name
+      image
+    }
+  }
+`;
 
-export const GameContext = React.createContext([]);
+export const GameContext = React.createContext({
+  registered: new Date(),
+  followers: [],
+  quizzes: [],
+  api: {
+    loading: true,
+    error: null,
+    data: null,
+  },
+});
 
 export const GameContextProvider = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
 
-  const [quests, setQuests] = useState(allQuests);
-  const [characters, setCharacters] = useState([]);
+  const [followerIds, setFollowerIds] = useState([]);
+  const { loading, data, error } = useQuery(GET_CHARACTERS(followerIds));
 
-  async function setFollowersWithDB() {
-    if (currentUser) {
-      const followersFromDB = await getFollowersFromDB(currentUser.uid);
-
-      const newFollowers = followersFromDB
-        ? followersFromDB.map((item) => {
-            return allFollowers.find((foll) => item.id === foll.id);
-          })
-        : [];
-
-      setCharacters(newFollowers);
-    }
-  }
-
-  async function setQuestsWithDB() {
-    if (currentUser) {
-      const newQuests = [...allQuests];
-      const questsFromDB = await getQuestsFromDB(currentUser.uid);
-
-      if (questsFromDB)
-        questsFromDB.forEach((item) => {
-          newQuests[item.id].finished = true;
-          newQuests[item.id].available = false;
-        });
-
-      setQuests(newQuests);
-    }
-  }
+  const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    setFollowersWithDB();
-    setQuestsWithDB();
-    // eslint-disable-next-line
-  }, []);
+    if (currentUser) {
+      getUserCharacters(currentUser.uid).then((res) => {
+        const newArray = res.map((item) => item.id);
+        setFollowerIds(newArray);
+      });
 
-  const setQuestFinished = (quest) => {
-    const newQuests = [...quests];
-    const index = newQuests.findIndex((q) => q.id === quest.id);
-    newQuests[index] = {
-      ...newQuests[index],
-      finished: true,
-      available: false,
-    };
-    persistFollower(quest.follower.id, currentUser.uid);
-    persistQuest(index, currentUser.uid);
-    setCharacters([...characters, quest.follower]);
-    setQuests(newQuests);
-  };
+      getUserQuizzes(currentUser.uid).then((res) => setQuizzes(res));
+    }
+    // eslint-disable-next-line
+  }, [currentUser]);
 
   return (
     <GameContext.Provider
       value={{
-        quests,
-        setQuestFinished,
-        characters,
-        setFollowersWithDB,
-        setQuestsWithDB,
+        registered: currentUser?.metadata?.creationTime,
+        followers: data?.characters,
+        quizzes,
+        api: {
+          loading,
+          error,
+        },
       }}
     >
       {children}
