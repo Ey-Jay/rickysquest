@@ -5,9 +5,7 @@ async function getQuizData(id) {
     .collection('quizzes')
     .doc(id.toString())
     .get()
-    .then((doc) => {
-      return doc.data();
-    })
+    .then((doc) => doc.data())
     .catch((err) => {
       return console.error(err);
     });

@@ -8,9 +8,7 @@ async function getUserQuizzes(uid) {
     .collection('users')
     .doc(uid)
     .get()
-    .then((res) => {
-      return res.data().quests;
-    })
+    .then((res) => res.data().quests)
     .catch((err) => {
       throw new Error(err);
     });

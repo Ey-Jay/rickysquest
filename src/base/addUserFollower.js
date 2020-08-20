@@ -5,9 +5,7 @@ async function addUserFollower(fid, uid) {
     .collection('users')
     .doc(uid)
     .get()
-    .then((res) => {
-      return res.data().followers;
-    })
+    .then((res) => res.data().followers)
     .catch((err) => {
       throw new Error(err);
     });
@@ -18,9 +16,7 @@ async function addUserFollower(fid, uid) {
     .update({
       followers: [...followers, { id: fid, acquired: new Date() }],
     })
-    .then(() => {
-      return true;
-    })
+    .then(() => true)
     .catch((err) => {
       throw new Error(err);
     });
