@@ -1,46 +1,48 @@
-import React, { useContext, useEffect } from 'react';
-import {
-  FinishedQuests,
-  // ActiveQuests,
-  AvailableQuests,
-  NoQuests,
-} from './styled';
-
+import React, { useContext } from 'react';
+import { FinishedQuests, AvailableQuests, NoQuests } from './styled';
+import { useQuery, gql } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
-
 import { GameContext } from 'context/game';
 
+const GET_CHARACTERS = (ids) => gql`
+  query Characters {
+    characters(id: [${[...ids]}]) {
+      id
+      name
+      image
+    }
+  }
+`;
+
 const QuestLog = () => {
-  // const { quests, setQuestsWithDB } = useContext(GameContext);
+  const { quizzes } = useContext(GameContext);
+  const availableQuizzes = quizzes.filter((quiz) => !quiz.isDone);
+  const finishedQuizzes = quizzes.filter((quiz) => quiz.isDone);
 
-  // useEffect(() => {
-  //   setQuestsWithDB();
-  //   // eslint-disable-next-line
-  // }, []);
+  const quizRewards = quizzes.map((quiz) => quiz.reward);
+  const { loading, data, error } = useQuery(GET_CHARACTERS(quizRewards));
 
-  // const activeQuests = quests.filter((q) => q.active);
-  const availableQuests = [];
-  const finishedQuests = [];
-  // const availableQuests = quests.filter((q) => q.available);
-  // const finishedQuests = quests.filter((q) => q.finished);
+  function getRewardData(id) {
+    return data.characters.find((char) => parseInt(char.id) === parseInt(id));
+  }
 
   const history = useHistory();
-
   const selectQuestOnClick = (quest) => () => {
     history.push('/quest/' + quest.id);
   };
+
+  if (loading) return <p>Loading ...</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
     <>
       <h1>Quizzes</h1>
       <h2>Available</h2>
       <AvailableQuests>
-        {availableQuests.length > 0 ? (
-          availableQuests.map((quest) => (
+        {availableQuizzes.length > 0 ? (
+          availableQuizzes.map((quest) => (
             <li key={quest.id}>
-              <h3>
-                {quest.type.toUpperCase()}: {quest.follower.name}
-              </h3>
+              <h3>Quiz: {getRewardData(quest.reward).name}</h3>
               <button onClick={selectQuestOnClick(quest)}>Start</button>
             </li>
           ))
@@ -50,11 +52,10 @@ const QuestLog = () => {
       </AvailableQuests>
       <h2>Finished</h2>
       <FinishedQuests>
-        {finishedQuests.length > 0 ? (
-          finishedQuests.map(({ id, follower, type }) => (
-            <li key={id}>
-              <h3>{follower.name}</h3>
-              <button>See Results</button>
+        {finishedQuizzes.length > 0 ? (
+          finishedQuizzes.map((quest) => (
+            <li key={quest.id}>
+              <h3>Quiz: {getRewardData(quest.reward).name}</h3>
             </li>
           ))
         ) : (
