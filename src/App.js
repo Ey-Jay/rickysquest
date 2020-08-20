@@ -13,8 +13,11 @@ import Navbar from 'components/Navbar';
 
 import { Content } from './App.styled.js';
 
+import getCharacterData from 'base/getCharacterData';
+
 function App() {
   const { currentUser } = useContext(AuthContext);
+  getCharacterData(1).then((res) => console.log(res));
   return (
     <div className="App">
       {currentUser && <Navbar />}
