@@ -5,7 +5,7 @@ import * as firebase from 'firebase/app';
 import { Container, Logo } from './styled';
 import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 import app from '../../base';
-import { AuthContext } from '../../context/AuthProvider';
+import { AuthContext } from 'context/AuthContext';
 
 const SignIn = () => {
   const { currentUser } = useContext(AuthContext);

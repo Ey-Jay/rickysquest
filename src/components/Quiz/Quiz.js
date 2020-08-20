@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { GameContext } from 'context/game';
-import { AuthContext } from 'context/AuthProvider';
+import { GameContext } from 'context/GameContext';
+import { AuthContext } from 'context/AuthContext';
 import { useParams } from 'react-router-dom';
 import EndScreen from 'components/EndScreen';
 import solveQuiz from 'base/solveQuiz';

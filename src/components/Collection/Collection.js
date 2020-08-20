@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AvatarContainer, CollectionContainer, Follower } from './styled';
 import { ReactComponent as AvatarSVG } from 'assets/avatar.svg';
 import { useQuery, gql } from '@apollo/client';
-import { GameContext } from 'context/game';
+import { GameContext } from 'context/GameContext';
 
 const GET_CHARACTERS = (ids) => gql`
   query Characters {

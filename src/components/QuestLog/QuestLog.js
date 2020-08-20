@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FinishedQuests, AvailableQuests, NoQuests } from './styled';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
-import { GameContext } from 'context/game';
+import { GameContext } from 'context/GameContext';
 
 const GET_CHARACTERS = (ids) => gql`
   query Characters {

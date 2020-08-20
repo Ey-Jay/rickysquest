@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AuthContext } from 'context/AuthProvider';
+import { AuthContext } from 'context/AuthContext';
 import getUserCharacters from 'base/getUserCharacters';
 import getUserQuizzes from 'base/getUserQuizzes';
 
