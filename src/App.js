@@ -6,7 +6,7 @@ import PrivateRoute from 'components/PrivateRoute';
 
 import Collection from 'components/Collection';
 import QuestLog from 'components/QuestLog';
-import QuestMenu from 'components/QuestMenu';
+import QuestMenu from 'components/Quiz';
 import SignIn from 'components/SignIn';
 import Navbar from 'components/Navbar';
 
