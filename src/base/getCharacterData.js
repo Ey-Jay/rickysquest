@@ -5,19 +5,8 @@ async function getCharacterData(id) {
     .collection('characters')
     .where('id', '==', id)
     .get()
-    .then((docArray) => {
-      let returnData;
-
-      docArray.forEach((doc) => {
-        const data = doc.data();
-        returnData = { ...data };
-      });
-
-      return returnData;
-    })
-    .catch((err) => {
-      return console.error(err);
-    });
+    .then((docArray) => docArray.docs[0].data())
+    .catch((err) => console.error(err));
 }
 
 export default getCharacterData;
