@@ -23,7 +23,7 @@ function App() {
             <SignIn />
           </Route>
           <PrivateRoute path="/quest/:questId" component={QuestMenu} />
-          <PrivateRoute path="/persona" component={Collection} />
+          <PrivateRoute path="/collection" component={Collection} />
           <PrivateRoute exact path="/" component={QuestLog} />
           <Route path="*">
             <h1>404</h1>
