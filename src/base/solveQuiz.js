@@ -1,4 +1,3 @@
-import { db } from './index';
 import getQuizData from './getQuizData';
 import addUserQuest from './addUserQuest';
 import addUserFollower from './addUserFollower';

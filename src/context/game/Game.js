@@ -17,12 +17,14 @@ export const GameContextProvider = ({ children }) => {
   const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    if (currentUser) {
-      getUserCharacters(currentUser.uid).then((res) => setFollowers(res));
-      getUserQuizzes(currentUser.uid).then((res) => setQuizzes(res));
-    }
+    if (currentUser) refreshData();
     // eslint-disable-next-line
   }, [currentUser]);
+
+  function refreshData() {
+    getUserCharacters(currentUser.uid).then((res) => setFollowers(res));
+    getUserQuizzes(currentUser.uid).then((res) => setQuizzes(res));
+  }
 
   return (
     <GameContext.Provider
@@ -30,6 +32,7 @@ export const GameContextProvider = ({ children }) => {
         registered: currentUser?.metadata?.creationTime,
         followers,
         quizzes,
+        refreshData,
       }}
     >
       {children}

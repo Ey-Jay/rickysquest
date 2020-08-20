@@ -22,7 +22,7 @@ function App() {
           <Route path="/signin">
             <SignIn />
           </Route>
-          <PrivateRoute path="/quest/:questId" component={QuestMenu} />
+          <PrivateRoute path="/quiz/:quizId" component={QuestMenu} />
           <PrivateRoute path="/collection" component={Collection} />
           <PrivateRoute exact path="/" component={QuestLog} />
           <Route path="*">

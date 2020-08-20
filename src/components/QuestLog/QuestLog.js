@@ -28,7 +28,7 @@ const QuestLog = () => {
 
   const history = useHistory();
   const selectQuestOnClick = (quest) => () => {
-    history.push('/quest/' + quest.id);
+    history.push('/quiz/' + quest.id);
   };
 
   if (loading) return <p>Loading ...</p>;
