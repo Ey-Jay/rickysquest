@@ -4,10 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import { AuthContext } from 'context/AuthProvider';
 import PrivateRoute from 'components/PrivateRoute';
 
-import Persona from 'components/Persona';
+import Collection from 'components/Collection';
 import QuestLog from 'components/QuestLog';
 import QuestMenu from 'components/QuestMenu';
-// import EndScreen from 'components/EndScreen';
 import SignIn from 'components/SignIn';
 import Navbar from 'components/Navbar';
 
@@ -24,7 +23,7 @@ function App() {
             <SignIn />
           </Route>
           <PrivateRoute path="/quest/:questId" component={QuestMenu} />
-          <PrivateRoute path="/persona" component={Persona} />
+          <PrivateRoute path="/persona" component={Collection} />
           <PrivateRoute exact path="/" component={QuestLog} />
           <Route path="*">
             <h1>404</h1>

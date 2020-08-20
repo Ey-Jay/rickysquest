@@ -1,8 +1,8 @@
-import React /*, { useContext, useEffect }*/ from 'react';
-import { AvatarContainer, Collection, Follower } from './styled';
+import React, { useContext } from 'react';
+import { AvatarContainer, CollectionContainer, Follower } from './styled';
 import { ReactComponent as AvatarSVG } from 'assets/avatar.svg';
 import { useQuery, gql } from '@apollo/client';
-// import { GameContext } from 'context/game';
+import { GameContext } from 'context/game';
 
 const GET_CHARACTERS = (ids) => gql`
   query Characters {
@@ -14,16 +14,11 @@ const GET_CHARACTERS = (ids) => gql`
   }
 `;
 
-const Persona = () => {
-  const { loading, data, error } = useQuery(
-    GET_CHARACTERS([7, 8, 345, 234, 123])
-  );
-  // const { characters, setFollowersWithDB } = useContext(GameContext);
+const Collection = () => {
+  const { followers } = useContext(GameContext);
+  const followerIds = followers.map((char) => char.id);
 
-  // useEffect(() => {
-  //   setFollowersWithDB();
-  //   // eslint-disable-next-line
-  // }, []);
+  const { loading, data, error } = useQuery(GET_CHARACTERS(followerIds));
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
@@ -35,16 +30,16 @@ const Persona = () => {
       </AvatarContainer>
 
       <h2>Follower Collection</h2>
-      <Collection>
+      <CollectionContainer>
         {data.characters.map((character) => (
           <Follower key={character.id}>
             <img src={character.image} alt={character.name} />
             <p>{character.name}</p>
           </Follower>
         ))}
-      </Collection>
+      </CollectionContainer>
     </>
   );
 };
 
-export default Persona;
+export default Collection;
