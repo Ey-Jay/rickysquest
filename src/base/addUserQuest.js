@@ -5,9 +5,7 @@ async function addUserQuest(qid, uid) {
     .collection('users')
     .doc(uid)
     .get()
-    .then((res) => {
-      return res.data().quests;
-    })
+    .then((res) => res.data().quests)
     .catch((err) => {
       throw new Error(err);
     });
@@ -18,9 +16,7 @@ async function addUserQuest(qid, uid) {
     .update({
       quests: [...quests, { id: qid, finished: new Date() }],
     })
-    .then(() => {
-      return true;
-    })
+    .then(() => true)
     .catch((err) => {
       throw new Error(err);
     });

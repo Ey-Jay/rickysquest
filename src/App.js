@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { AuthContext } from 'context/AuthProvider';
+import { AuthContext } from 'context/AuthContext';
 import PrivateRoute from 'components/PrivateRoute';
 
-import Persona from 'components/Persona';
+import Collection from 'components/Collection';
 import QuestLog from 'components/QuestLog';
-import QuestMenu from 'components/QuestMenu';
-// import EndScreen from 'components/EndScreen';
+import QuestMenu from 'components/Quiz';
 import SignIn from 'components/SignIn';
 import Navbar from 'components/Navbar';
 
@@ -23,8 +22,8 @@ function App() {
           <Route path="/signin">
             <SignIn />
           </Route>
-          <PrivateRoute path="/quest/:questId" component={QuestMenu} />
-          <PrivateRoute path="/persona" component={Persona} />
+          <PrivateRoute path="/quiz/:quizId" component={QuestMenu} />
+          <PrivateRoute path="/collection" component={Collection} />
           <PrivateRoute exact path="/" component={QuestLog} />
           <Route path="*">
             <h1>404</h1>

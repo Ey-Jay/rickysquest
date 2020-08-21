@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { AuthProvider } from 'context/AuthProvider';
+import { AuthProvider } from 'context/AuthContext';
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyles } from 'theme';
-import { GameContextProvider } from 'context/game';
+import { GameContextProvider } from 'context/GameContext';
 
 const client = new ApolloClient({
   uri: '/.netlify/functions/graphql',

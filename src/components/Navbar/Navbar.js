@@ -16,7 +16,7 @@ const Navbar = () => {
           <NavLink exact to="/">
             <li>Quests</li>
           </NavLink>
-          <NavLink to="/persona">
+          <NavLink to="/collection">
             <li>Collection</li>
           </NavLink>
           <li onClick={onClickHandler}>Logout</li>

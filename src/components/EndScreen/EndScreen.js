@@ -1,24 +1,41 @@
 import React from 'react';
 import { Follower, HomeButton } from './styled';
 import { useHistory } from 'react-router-dom';
+import { useQuery, gql } from '@apollo/client';
 
-const EndScreen = ({ quest }) => {
+const GET_CHARACTER = (id) => gql`
+  query Character {
+    character(id: ${id}) {
+      id
+      name
+      image
+    }
+  }
+`;
+
+const EndScreen = ({ outcome, quizData }) => {
+  const { loading, data, error } = useQuery(GET_CHARACTER(quizData.reward));
+
   const history = useHistory();
-
   const onClickHandler = () => history.push('/');
 
-  const success = true;
+  if (loading) return <p>Loading ...</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
     <>
-      <h1>Finished: {quest.type.toUpperCase()}</h1>
+      <h1 style={{ textTransform: 'capitalize' }}>{outcome}</h1>
 
-      {success ? (
+      {outcome === 'success' ? (
         <>
           <div>
             <strong>You were successful! </strong>
             Your reward:
           </div>
+          <Follower>
+            <img src={data.character.image} alt="" />
+            <p>{data.character.name}</p>
+          </Follower>
         </>
       ) : (
         <div style={{ marginBottom: '40px' }}>
@@ -26,12 +43,6 @@ const EndScreen = ({ quest }) => {
         </div>
       )}
 
-      {success ? (
-        <Follower>
-          <img src={quest.follower.image} alt="" />
-          <p>{quest.follower.name}</p>
-        </Follower>
-      ) : null}
       <div style={{ textAlign: 'center' }}>
         <HomeButton onClick={onClickHandler}> Go to dashboard </HomeButton>
       </div>

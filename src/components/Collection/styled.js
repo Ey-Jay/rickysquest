@@ -11,7 +11,7 @@ export const AvatarContainer = styled.div`
   align-items: center;
 `;
 
-export const Collection = styled.section`
+export const CollectionContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

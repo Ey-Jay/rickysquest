@@ -55,39 +55,6 @@ export const FinishedQuests = styled.ul`
   }
 `;
 
-export const ActiveQuests = styled.ul`
-  margin: 0 0 60px;
-  padding: 0;
-  list-style-type: none;
-
-  li {
-    display: flex;
-    align-items: center;
-    background-color: ${({ theme }) => theme.backgroundLight};
-    margin: 0 0 20px;
-    padding: 10px 10px 10px 20px;
-    border-radius: 4px;
-  }
-
-  h3 {
-    color: ${({ theme }) => theme.colorDark};
-    margin: 0;
-    padding: 0;
-    flex: 1;
-  }
-
-  aside {
-    background-color: ${({ theme }) => theme.backgroundDark};
-    border: none;
-    border-radius: 4px;
-    color: ${({ theme }) => theme.colorDark};
-    font-weight: 700;
-    font-size: 0.7rem;
-    padding: 18px 36px;
-    text-transform: uppercase;
-  }
-`;
-
 export const AvailableQuests = styled.ul`
   margin: 0 0 60px;
   padding: 0;
