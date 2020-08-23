@@ -33,6 +33,7 @@ const QuestLog = () => {
 
   useEffect(() => {
     refreshData();
+    // eslint-disable-next-line
   }, []);
 
   if (loading) return <p>Loading ...</p>;
