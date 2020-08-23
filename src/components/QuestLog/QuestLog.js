@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FinishedQuests, AvailableQuests, NoQuests } from './styled';
 import { useQuery, gql } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
@@ -15,7 +15,7 @@ const GET_CHARACTERS = (ids) => gql`
 `;
 
 const QuestLog = () => {
-  const { quizzes } = useContext(GameContext);
+  const { quizzes, refreshData } = useContext(GameContext);
   const availableQuizzes = quizzes.filter((quiz) => !quiz.isDone);
   const finishedQuizzes = quizzes.filter((quiz) => quiz.isDone);
 
@@ -30,6 +30,11 @@ const QuestLog = () => {
   const selectQuestOnClick = (quest) => () => {
     history.push('/quiz/' + quest.id);
   };
+
+  useEffect(() => {
+    refreshData();
+    // eslint-disable-next-line
+  }, []);
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>{error.message}</p>;
@@ -47,7 +52,7 @@ const QuestLog = () => {
             </li>
           ))
         ) : (
-          <NoQuests>No Available Adventures</NoQuests>
+          <NoQuests>No Available Quizzes</NoQuests>
         )}
       </AvailableQuests>
       <h2>Finished</h2>
@@ -59,7 +64,7 @@ const QuestLog = () => {
             </li>
           ))
         ) : (
-          <NoQuests>No Finished Quests</NoQuests>
+          <NoQuests>No Finished Quizzes</NoQuests>
         )}
       </FinishedQuests>
     </>
