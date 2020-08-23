@@ -1,28 +1,21 @@
 import styled from 'styled-components';
 
-export const Follower = styled.article`
-  margin: 40px auto;
-  max-width: 80px;
-
-  img {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    object-fit: cover;
-  }
-
-  p {
-    margin: 0;
-    padding: 0;
-    font-weight: 700;
-    font-size: 0.7rem;
-    text-align: center;
-    word-wrap: break-word;
-  }
+export const Question = styled.p`
+  font-size: 1.2rem;
+  font-weight: 700;
+  background-color: ${({ theme }) => theme.backgroundLight};
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
 `;
 
-export const HomeButton = styled.button`
+export const Answers = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;
+
+export const Option = styled.li`
   background-color: ${({ theme }) => theme.primaryDark};
   border: none;
   border-radius: 4px;

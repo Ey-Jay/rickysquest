@@ -17,7 +17,7 @@ const EndScreen = ({ outcome, quizData }) => {
   const { loading, data, error } = useQuery(GET_CHARACTER(quizData.reward));
 
   const history = useHistory();
-  const onClickHandler = () => history.push('/');
+  const onClickHandler = () => history.push('/collection');
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>{error.message}</p>;
@@ -44,7 +44,7 @@ const EndScreen = ({ outcome, quizData }) => {
       )}
 
       <div style={{ textAlign: 'center' }}>
-        <HomeButton onClick={onClickHandler}> Go to dashboard </HomeButton>
+        <HomeButton onClick={onClickHandler}> Go to Collection </HomeButton>
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import { AuthContext } from 'context/AuthContext';
 import { useParams } from 'react-router-dom';
 import EndScreen from 'components/EndScreen';
 import solveQuiz from 'base/solveQuiz';
+import { Question, Answers, Option } from './styled';
 
 const QuestMenu = () => {
   const { quizId } = useParams();
@@ -48,16 +49,16 @@ const QuestMenu = () => {
   }
 
   return (
-    <div>
-      <div>Question: {quizData.question}</div>
-      <ul>
+    <>
+      <Question>{quizData.question}</Question>
+      <Answers>
         {shuffle(quizData.answers).map((answer, idx) => (
-          <li key={idx} onClick={() => pickAnswer(answer)}>
+          <Option key={idx} onClick={() => pickAnswer(answer)}>
             {answer}
-          </li>
+          </Option>
         ))}
-      </ul>
-    </div>
+      </Answers>
+    </>
   );
 };
 
