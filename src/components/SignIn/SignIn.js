@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import * as firebase from 'firebase/app';
 
 import {
@@ -37,7 +37,13 @@ const SignIn = () => {
       });
   };
 
-  if (currentUser) return <Redirect to="/" />;
+  const history = useHistory();
+
+  if (currentUser) {
+    const path = history.location.pathname;
+    const pathIsSignIn = /signin/g.test(path);
+    return <Redirect to={pathIsSignIn ? '/' : path}></Redirect>;
+  }
 
   return (
     <>

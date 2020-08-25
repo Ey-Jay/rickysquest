@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { AuthContext } from 'context/AuthContext';
 import PrivateRoute from 'components/PrivateRoute';
@@ -19,14 +19,12 @@ function App() {
       {currentUser && <Navbar />}
       <Content>
         <Switch>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
           <PrivateRoute path="/quiz/:quizId" component={QuestMenu} />
           <PrivateRoute path="/collection" component={Collection} />
           <PrivateRoute exact path="/" component={QuestLog} />
+
           <Route path="*">
-            <h1>404</h1>
+            <Redirect to="/"></Redirect>
           </Route>
         </Switch>
       </Content>
