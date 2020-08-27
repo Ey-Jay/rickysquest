@@ -22,8 +22,10 @@ export const GameContextProvider = ({ children }) => {
   }, [currentUser]);
 
   function refreshData() {
-    getUserCharacters(currentUser.uid).then((res) => setFollowers(res));
-    getUserQuizzes(currentUser.uid).then((res) => setQuizzes(res));
+    if (currentUser) {
+      getUserCharacters(currentUser.uid).then((res) => setFollowers(res));
+      getUserQuizzes(currentUser.uid).then((res) => setQuizzes(res));
+    }
   }
 
   return (

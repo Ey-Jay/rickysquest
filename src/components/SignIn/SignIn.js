@@ -13,9 +13,11 @@ import {
 import { ReactComponent as LogoSVG } from 'assets/rick.svg';
 import app from '../../base';
 import { AuthContext } from 'context/AuthContext';
+import { GameContext } from 'context/GameContext';
 
 const SignIn = () => {
   const { currentUser } = useContext(AuthContext);
+  const { refreshData } = useContext(GameContext);
   const provider = new firebase.auth.GoogleAuthProvider();
 
   const signIn = () => {
@@ -32,6 +34,7 @@ const SignIn = () => {
         });
       })
       .then((res) => res.json().then((res) => console.log(res)))
+      .then(() => refreshData())
       .catch((error) => {
         console.error(error);
       });
